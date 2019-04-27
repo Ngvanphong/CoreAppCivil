@@ -31,23 +31,15 @@ namespace TeduCoreApp.Application.Interfaces
 
         Product GetProductDbById(int id);
 
-        List<ProductViewModel> GetHotProduct(int number);
+   
 
-        List<ProductViewModel> GetAllHotProduct(int page, int pageSize, out int totalRow);
-
-        List<ProductViewModel> GetPromotionProduct(int number);
-
-        List<ProductViewModel> GetAllPromotionProductByCatygory(int? category,string sort, int page, int pageSize, out int totalRow);
-
-        List<ProductViewModel> GetAllByTagPaging(string tag, int page, int pageSize, string sort, out int totalRow);
-
-        List<ProductViewModel> GetAllByCategoryPaging(int categoryId, int page, int pageSize, string sort, out int totalRow);
+        List<ProductViewModel> GetAllByCategoryPaging(int categoryId, int page, int pageSize, out int totalRow);
 
         List<ProductViewModel> GetAllByNamePaging(string Name, int page, int pageSize, out int totalRow);
 
         List<ProductViewModel> GetProductRelate(int categoryId, int number);
 
-        List<ProductViewModel> GetProductUpsell(int number);
+       
 
         List<TagViewModel> GetAllTag(int number);
 
@@ -55,8 +47,8 @@ namespace TeduCoreApp.Application.Interfaces
 
         TagViewModel GetTagById(string id);
 
-        List<ProductCategoryViewModel> GetListCategoryHasPromotion();
-
         void SaveChanges();
+
+        List<ProductViewModel> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow);
     }
 }

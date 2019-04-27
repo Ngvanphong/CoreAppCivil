@@ -22,10 +22,7 @@ namespace TeduCoreApp.Data.Entities
         {
             Name = productCategoryVm.Name;
             Description = productCategoryVm.Description;
-            ParentId = productCategoryVm.ParentId;
-            HomeFlag = productCategoryVm.HomeFlag;
-            HomeOrder = productCategoryVm.HomeOrder;
-            Image = productCategoryVm.Image;
+            ParentId = productCategoryVm.ParentId;          
             SortOrder = productCategoryVm.SortOrder;
             Status = productCategoryVm.Status;
             SeoPageTitle = productCategoryVm.SeoPageTitle;
@@ -43,13 +40,7 @@ namespace TeduCoreApp.Data.Entities
 
         public int? ParentId { get; set; }
 
-        public int? HomeOrder { get; set; }
-
-        [MaxLength(255)]
-        public string Image { get; set; }
-
-        public bool? HomeFlag { get; set; }
-
+ 
         public DateTime DateCreated { set; get; }
         public DateTime DateModified { set; get; }
         public int SortOrder { set; get; }

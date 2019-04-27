@@ -1,7 +1,4 @@
-﻿using System;
-using TeduCoreApp.Data.Entities;
-using TeduCoreApp.Data.ViewModels.Advertistment;
-using TeduCoreApp.Data.ViewModels.Bill;
+﻿using TeduCoreApp.Data.Entities;
 using TeduCoreApp.Data.ViewModels.Blog;
 using TeduCoreApp.Data.ViewModels.Identity;
 using TeduCoreApp.Data.ViewModels.Pantner;
@@ -21,12 +18,11 @@ namespace TeduCoreApp.WebApi.Extensions
             productCategory.ParentId = productCategoryVm.ParentId;
             productCategory.SortOrder = productCategoryVm.SortOrder;
             productCategory.Description = productCategoryVm.Description;
-            productCategory.Image = productCategoryVm.Image;
-            productCategory.HomeFlag = productCategoryVm.HomeFlag;
+
             productCategory.SeoKeywords = productCategoryVm.SeoKeywords;
             productCategory.SeoDescription = productCategoryVm.SeoDescription;
             productCategory.Status = productCategoryVm.Status;
-            productCategory.HomeOrder = productCategoryVm.HomeOrder;
+
             productCategory.SeoPageTitle = productCategoryVm.SeoPageTitle;
         }
 
@@ -88,29 +84,6 @@ namespace TeduCoreApp.WebApi.Extensions
             slide.OrtherPageHome = slideVm.OrtherPageHome;
         }
 
-        public static void UpdateBillDetail(this BillDetail billDetail, BillDetailViewModel billDetailVm)
-        {
-            billDetail.BillId = billDetailVm.BillId;
-            billDetail.ProductId = billDetailVm.ProductId;
-            billDetail.Quantity = billDetailVm.Quantity;
-            billDetail.Price = billDetailVm.Price;
-            billDetail.ColorId = billDetailVm.ColorId;
-            billDetail.SizeId = billDetailVm.SizeId;
-        }
-
-        public static void UpdateAdvertistment(this Advertistment advertistment, AdvertistmentViewModel advertistmentVm)
-        {
-            advertistment.Name = advertistmentVm.Name;
-            advertistment.Description = advertistmentVm.Description;
-            advertistment.Image = advertistmentVm.Image;
-            advertistment.Url = advertistmentVm.Url;
-            advertistment.PositionId = advertistmentVm.PositionId;
-            advertistment.PageId = advertistmentVm.PageId;
-            advertistment.Status = advertistmentVm.Status;
-            advertistment.DateModified = DateTime.Now;
-            advertistment.SortOrder = advertistmentVm.SortOrder;
-        }
-
         public static void UpdatePantner(this Pantner pantner, PantnerViewModel pantnerVm)
         {
             pantner.Name = pantnerVm.Name;
@@ -134,15 +107,12 @@ namespace TeduCoreApp.WebApi.Extensions
         {
             productDb.Name = productVm.Name;
             productDb.CategoryId = productVm.CategoryId;
-            productDb.Price = productVm.Price;
-            productDb.OriginalPrice = productVm.OriginalPrice;
-            productDb.PromotionPrice = productVm.PromotionPrice;
+
             productDb.Description = productVm.Description;
             productDb.Content = productVm.Content;
-            productDb.HomeFlag = productVm.HomeFlag;
-            productDb.HotFlag = productVm.HotFlag;
+
             productDb.Tag = productVm.Tag;
-            productDb.Unit = productVm.Unit;
+
             productDb.Status = productVm.Status;
             productDb.SeoPageTitle = productVm.SeoPageTitle;
             productDb.SeoAlias = productVm.SeoAlias;

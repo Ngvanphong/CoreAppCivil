@@ -20,16 +20,10 @@ namespace TeduCoreApp.Data.Entities
         public Product(ProductViewModel productVm)
         {
             Name = productVm.Name;
-            CategoryId = productVm.CategoryId;         
-            Price = productVm.Price;
-            OriginalPrice = productVm.OriginalPrice;
-            PromotionPrice = productVm.PromotionPrice;
+            CategoryId = productVm.CategoryId;                    
             Description = productVm.Description;
             Content = productVm.Content;
-            HomeFlag = productVm.HomeFlag;
-            HotFlag = productVm.HotFlag;
-            Tag = productVm.Tag;
-            Unit = productVm.Unit;
+            Tag = productVm.Tag;           
             Status = productVm.Status;
             SeoPageTitle = productVm.SeoPageTitle;
             SeoAlias = productVm.SeoAlias;
@@ -45,13 +39,7 @@ namespace TeduCoreApp.Data.Entities
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
         public virtual ProductCategory ProductCategory { get; set; }
-       
-        [Required]
-        public decimal Price { get; set; }
-
-        public decimal? PromotionPrice { get; set; }
-        [Required]
-        public decimal OriginalPrice { get; set; }
+         
         [MaxLength(500)]
         public string Description { get; set; }
 
@@ -60,15 +48,8 @@ namespace TeduCoreApp.Data.Entities
         [MaxLength(500)]
         public string ThumbnailImage { get; set; }
 
-        public bool? HomeFlag { get; set; }
-
-        public bool? HotFlag { get; set; }
-
-        public int ViewCount { get; set; }
         [MaxLength(255)]
         public string Tag { set; get; }
-        [MaxLength(255)]
-        public string Unit { get; set; }
 
         public DateTime DateCreated { set; get; }
 

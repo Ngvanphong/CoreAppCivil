@@ -86,12 +86,7 @@ namespace TeduCoreApp.WebApi.Controllers
             }
             if (ModelState.IsValid)
             {
-                ProductCategory productCategoryDb = _productCategoryService.GetByIdDb(productCategoryVm.Id);
-                string oldPath = productCategoryDb.Image;
-                if (oldPath != productCategoryVm.Image && !string.IsNullOrEmpty(oldPath))
-                {
-                    oldPath.DeletementByString(_env);
-                }
+                ProductCategory productCategoryDb = _productCategoryService.GetByIdDb(productCategoryVm.Id);                           
                 productCategoryDb.UpdateProductCategory(productCategoryVm);
                 _productCategoryService.UpdateDb(productCategoryDb);
                 _productCategoryService.SaveChanges();
@@ -110,14 +105,9 @@ namespace TeduCoreApp.WebApi.Controllers
                 return new BadRequestObjectResult(CommonConstants.Forbidden);
             }
             try
-            {
-                string pathImage = _productCategoryService.GetById(id).Image;
+            {               
                 _productCategoryService.Delete(id);
-                _productCategoryService.SaveChanges();
-                if (!string.IsNullOrEmpty(pathImage))
-                {
-                    pathImage.DeletementByString(_env);
-                }
+                _productCategoryService.SaveChanges();               
                 return new OkObjectResult(id);
             }
             catch (Exception ex)

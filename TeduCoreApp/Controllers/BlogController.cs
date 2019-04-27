@@ -13,13 +13,13 @@ namespace TeduCoreApp.Controllers
     public class BlogController : Controller
     {
         private IBlogService _blogService;
-        private IAdvertistmentService _advertistmentService;
+       
         private IConfiguration _config;
-        public BlogController(IBlogService blogService, IAdvertistmentService advertistmentService,
+        public BlogController(IBlogService blogService, 
             IConfiguration config)
         {
             _blogService = blogService;
-            _advertistmentService = advertistmentService;
+           
             _config = config;
         }
         [Route("blog.html")]
@@ -32,7 +32,7 @@ namespace TeduCoreApp.Controllers
             blogIndex.ResultPagging.TotalRows = totalRows;
             blogIndex.DomainApi= _config["DomainApi:Domain"];
             blogIndex.Tags = _blogService.GetTagBlogTop(15);
-            blogIndex.Advertistments = _advertistmentService.GetbyPageAndPosition(PageName.Orther, PositionName.Default);
+            
             return View(blogIndex);
         }
     }

@@ -94,8 +94,8 @@ namespace TeduCoreApp.Application.Implementation
 
         public List<ProductCategoryViewModel> GetHomeCategories(int top)
         {
-            return _mapper.Map<List<ProductCategoryViewModel>>(_productCategoryRepository.FindAll(x => x.Status == Status.Active && x.HomeFlag == true, c => c.Products)
-                 .OrderByDescending(x => x.HomeOrder).Take(top).ToList());                
+            return _mapper.Map<List<ProductCategoryViewModel>>(_productCategoryRepository.FindAll(x => x.Status == Status.Active, c => c.Products)
+                 .OrderByDescending(x => x.SortOrder).Take(top).ToList());                
         }
 
         public void ReOrder(int sourceId, int targetId)

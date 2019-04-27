@@ -12,17 +12,16 @@ namespace TeduCoreApp.Controllers
     public class ProductController : Controller
     {
         private IProductService _productService;
-        private ISlideService _slideService;
-        private IAdvertistmentService _advertistmentService;
+        private ISlideService _slideService;        
         private IConfiguration _config;
         private IProductCategoryService _productCategoryService;
 
-        public ProductController(IProductService productService, ISlideService slideService, IAdvertistmentService advertistmentService,
+        public ProductController(IProductService productService, ISlideService slideService,
             IConfiguration config,IProductCategoryService productCategoryService)
         {
             _productService = productService;
             _slideService = slideService;
-            _advertistmentService = advertistmentService;
+           
             _config = config;
             _productCategoryService = productCategoryService;
         }
@@ -33,7 +32,7 @@ namespace TeduCoreApp.Controllers
             ProductIndexViewModel product = new ProductIndexViewModel() { };
             product.ProductCategory = _productCategoryService.GetById(id);
             product.Slides = _slideService.GetAll(true);
-            product.Advertistments = _advertistmentService.GetbyPageAndPosition(PageName.Orther, PositionName.Default);
+           
             product.Tags = _productService.GetAllTag(15);
             product.DomainApi = _config["DomainApi:Domain"];
             return View(product);
@@ -41,9 +40,9 @@ namespace TeduCoreApp.Controllers
 
         [Route("product/getProductByCategory")]
         [HttpGet]
-        public IActionResult GetProduct(int id,string sort,int page,int pageSize)
+        public IActionResult GetProduct(int id,int page,int pageSize)
         {
-            List<ProductViewModel> products = _productService.GetAllByCategoryPaging(id, page, pageSize, sort, out int totalRows);
+            List<ProductViewModel> products = _productService.GetAllByCategoryPaging(id, page, pageSize, out int totalRows);
             return new OkObjectResult(new WebResultPaging<ProductViewModel>()
             {              
                 Items = products,

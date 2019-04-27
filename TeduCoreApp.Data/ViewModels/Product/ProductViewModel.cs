@@ -18,15 +18,6 @@ namespace TeduCoreApp.Data.ViewModels.Product
         [Required]
         public int CategoryId { get; set; }
 
-        [Required]
-        [DefaultValue(0)]
-        public decimal Price { get; set; }
-
-        public decimal? PromotionPrice { get; set; }
-
-        [Required]
-        public decimal OriginalPrice { get; set; }
-
         [StringLength(255)]
         public string Description { get; set; }
 
@@ -35,17 +26,8 @@ namespace TeduCoreApp.Data.ViewModels.Product
         [MaxLength(500)]
         public string ThumbnailImage { get; set; }
 
-        public bool? HomeFlag { get; set; }
-
-        public bool? HotFlag { get; set; }
-
-        public int? ViewCount { get; set; }
-
         [StringLength(255)]
         public string Tag { get; set; }
-
-        [StringLength(255)]
-        public string Unit { get; set; }
 
         public  ProductCategoryViewModel ProductCategory { set; get; }
 
@@ -61,6 +43,7 @@ namespace TeduCoreApp.Data.ViewModels.Product
         public string SeoDescription { set; get; }
 
         public DateTime DateCreated { set; get; }
+
         public DateTime DateModified { set; get; }
 
         public Status Status { set; get; }

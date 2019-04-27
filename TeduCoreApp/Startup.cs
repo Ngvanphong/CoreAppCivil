@@ -44,31 +44,9 @@ namespace TeduCoreApp
             services.AddScoped<SignInManager<AppUser>, SignInManager<AppUser>>();
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
-            //Config Indentity
-            services.Configure<IdentityOptions>(option =>
-            {
-                //password setting
-                option.Password.RequireDigit = true;
-                option.Password.RequiredLength = 6;
-                option.Password.RequireNonAlphanumeric = false;
-                option.Password.RequireUppercase = false;
-                option.Password.RequireLowercase = false;
-                //lock setting
-                option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1440);
-                option.Lockout.MaxFailedAccessAttempts = 10;
-                // check had email
-                option.User.RequireUniqueEmail = true;
-            });
 
             //section setting
             services.AddDistributedMemoryCache();
-
-            services.AddSession(options =>
-            {
-                // Set a short timeout for easy testing.
-                options.IdleTimeout = TimeSpan.FromMinutes(180);
-                options.Cookie.HttpOnly = true;
-            });
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
@@ -92,25 +70,17 @@ namespace TeduCoreApp
             services.AddTransient<IRepository<ProductTag, int>, EFRepository<ProductTag, int>>();
             services.AddTransient<ITagRepository, TagRepository>();
             services.AddTransient<IRepository<ProductImage, int>, EFRepository<ProductImage, int>>();
-            services.AddTransient<IRepository<Size, int>, EFRepository<Size, int>>();
-            services.AddTransient<IRepository<Color, int>, EFRepository<Color, int>>();
-            services.AddTransient<IRepository<ProductQuantity, int>, EFRepository<ProductQuantity, int>>();
+            
             services.AddTransient<IRepository<Blog, int>, EFRepository<Blog, int>>();
             services.AddTransient<IRepository<BlogTag, int>, EFRepository<BlogTag, int>>();
             services.AddTransient<IRepository<BlogImage, int>, EFRepository<BlogImage, int>>();
             services.AddTransient<IRepository<Slide, int>, EFRepository<Slide, int>>();
-            services.AddTransient<IRepository<Bill, int>, EFRepository<Bill, int>>();
-            services.AddTransient<IRepository<BillDetail, int>, EFRepository<BillDetail, int>>();
-            services.AddTransient<IRepository<BillUserAnnoucement, int>, EFRepository<BillUserAnnoucement, int>>();
-            services.AddTransient<IRepository<WholePrice, int>, EFRepository<WholePrice, int>>();
-            services.AddTransient<IRepository<Advertistment, int>, EFRepository<Advertistment, int>>();
-            services.AddTransient<IRepository<AdvertistmentPage, string>, EFRepository<AdvertistmentPage, string>>();
-            services.AddTransient<IRepository<AdvertistmentPosition, string>, EFRepository<AdvertistmentPosition, string>>();
+            
             services.AddTransient<IRepository<Data.Entities.Contact, string>, EFRepository<Data.Entities.Contact, string>>();
             services.AddTransient<IRepository<Page, int>, EFRepository<Page, int>>();
             services.AddTransient<IRepository<PageImage, int>, EFRepository<PageImage, int>>();
             services.AddTransient<IRepository<Pantner, int>, EFRepository<Pantner, int>>();
-            services.AddTransient<IRepository<Subcrible, int>, EFRepository<Subcrible, int>>();
+            
             services.AddTransient<IRepository<SystemConfig, string>, EFRepository<SystemConfig, string>>();
 
             // Service
@@ -119,20 +89,17 @@ namespace TeduCoreApp
             services.AddTransient<IFunctionService, FunctionService>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IProductImageService, ProductImageService>();
-            services.AddTransient<IProductQuantityService, ProductQuantityService>();
+            
             services.AddTransient<IAppUserService, AppUserService>();
             services.AddTransient<IBlogService, BlogService>();
             services.AddTransient<IBlogImageService, BlogImageService>();
             services.AddTransient<ISlideService, SlideService>();
-            services.AddTransient<IBillService, BillService>();
-            services.AddTransient<IBillUserAnnoucementService, BillUserAnnoucementService>();
-            services.AddTransient<IWholePriceService, WholePriceService>();
-            services.AddTransient<IAdvertistmentService, AdvertistmentService>();
+            
             services.AddTransient<IContactService, ContactService>();
             services.AddTransient<IPageService, PageService>();
             services.AddTransient<IPageImageService, PageImageService>();
             services.AddTransient<IPantnerService, PantnerService>();
-            services.AddTransient<ISubcribleService, SubcribleService>();
+            
             services.AddTransient<ISystemConfigService, SystemConfigService>();
 
             services.AddMvc().AddJsonOptions(option => option.SerializerSettings.ContractResolver = new DefaultContractResolver());
@@ -149,9 +116,9 @@ namespace TeduCoreApp
         {
             if (env.IsDevelopment())
             {
-                app.UseBrowserLink();
+               
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+               
             }
             else
             {
@@ -162,7 +129,7 @@ namespace TeduCoreApp
 
             app.UseAuthentication();
 
-            app.UseSession();
+            
 
             logerFactory.AddFile("Logs/tedu-{Date}.txt");
 
