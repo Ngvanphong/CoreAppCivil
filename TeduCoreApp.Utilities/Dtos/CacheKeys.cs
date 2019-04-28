@@ -9,6 +9,7 @@ namespace TeduCoreApp.Utilities.Dtos
         public static string CategoryMain { get { return "_CategoryMain"; } }
         public static string CategoryMobile { get { return "_CategoryMobile"; } }
         public static string Footer { get { return "_Footer"; } }
-  
+        public static string Header { get { return "_Header"; } }
+
     }
 }

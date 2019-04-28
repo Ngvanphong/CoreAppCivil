@@ -45,6 +45,23 @@ namespace TeduCoreApp
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
 
+            //Config Indentity
+            services.Configure<IdentityOptions>(option =>
+            {
+                //password setting
+                option.Password.RequireDigit = true;
+                option.Password.RequiredLength = 6;
+                option.Password.RequireNonAlphanumeric = false;
+                option.Password.RequireUppercase = false;
+                option.Password.RequireLowercase = false;
+                //lock setting
+                option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1440);
+                option.Lockout.MaxFailedAccessAttempts = 10;
+                // check had email
+                option.User.RequireUniqueEmail = true;
+            });
+
+
             //section setting
             services.AddDistributedMemoryCache();
 

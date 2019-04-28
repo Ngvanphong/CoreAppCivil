@@ -35,7 +35,7 @@ namespace TeduCoreApp.Controllers.Components
                 entry.SlidingExpiration = TimeSpan.FromMinutes(60);
                 FooterViewModel footer = new FooterViewModel() { };
                 footer.Contacts = _contactService.GetContact();
-                footer.ProductCategorys = _productCategoryService.GetCategoryFooter(6);
+                footer.ProductCategorys = _productCategoryService.GetCategoryFooter(14);
                 footer.Pantners = _pantnerService.GetAllStatus();
                 footer.DomainApi = _config["DomainApi:Domain"];
                 return footer;

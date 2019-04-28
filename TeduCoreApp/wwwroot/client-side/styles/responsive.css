@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -90,7 +90,7 @@
 	}
 	.banner_2_dots
 	{
-		left: calc((100% - 960px) / 2 + 15px);
+		right: calc((100% - 960px) / 2 + 15px);
 	}
 	.arrivals_single > div
 	{

@@ -10,22 +10,15 @@
                     <!-- Brands Slider -->
 
                     <div class="owl-carousel owl-theme brands_slider">
-
-                        <div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="~/client-side/images/brands_1.jpg" alt=""></div></div>
-                        <div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="~/client-side/images/brands_2.jpg" alt=""></div></div>
-                        <div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="~/client-side/images/brands_3.jpg" alt=""></div></div>
-                        <div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="~/client-side/images/brands_4.jpg" alt=""></div></div>
-                        <div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="~/client-side/images/brands_5.jpg" alt=""></div></div>
-                        <div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="~/client-side/images/brands_6.jpg" alt=""></div></div>
-                        <div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="~/client-side/images/brands_7.jpg" alt=""></div></div>
-                        <div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="~/client-side/images/brands_8.jpg" alt=""></div></div>
-
+                        @foreach (var pantner in Model.Pantners)
+                        {
+                            <div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="@Model.DomainApi@pantner.Image" alt="@pantner.Name"></div></div>
+                        }
                     </div>
 
                     <!-- Brands Slider Navigation -->
                     <div class="brands_nav brands_prev"><i class="fas fa-chevron-left"></i></div>
                     <div class="brands_nav brands_next"><i class="fas fa-chevron-right"></i></div>
-
                 </div>
             </div>
         </div>
@@ -40,13 +33,12 @@
             <div class="col-lg-3 footer_col">
                 <div class="footer_column footer_contact">
                     <div class="logo_container">
-                        <div class="logo"><a href="#">OneTech</a></div>
+                        <div class="logo"><a href="/index.html">OneTech</a></div>
                     </div>
-                    <div class="footer_title">Got Question? Call Us 24/7</div>
-                    <div class="footer_phone">+38 068 005 3570</div>
+                    <div class="footer_title">Chăm sóc khách hàng 24/7</div>
+                    <div class="footer_phone">@Model.Contacts.Phone</div>
                     <div class="footer_contact_text">
-                        <p>17 Princess Road, London</p>
-                        <p>Grester London NW18JR, UK</p>
+                        <p>@Model.Contacts.Address</p>
                     </div>
                     <div class="footer_social">
                         <ul>
@@ -60,48 +52,44 @@
 
             <div class="col-lg-2 offset-lg-2">
                 <div class="footer_column">
-                    <div class="footer_title">Find it Fast</div>
+                    <div class="footer_title">Sản phẩm</div>
                     <ul class="footer_list">
-                        <li><a href="#">Computers & Laptops</a></li>
-                        <li><a href="#">Cameras & Photos</a></li>
-                        <li><a href="#">Hardware</a></li>
-                        <li><a href="#">Smartphones & Tablets</a></li>
-                        <li><a href="#">TV & Audio</a></li>
-                    </ul>
-                    <div class="footer_subtitle">Gadgets</div>
-                    <ul class="footer_list">
-                        <li><a href="#">Car Electronics</a></li>
+                        @{var countbegin = (Model.ProductCategorys.Count() > 7) ? 7 : Model.ProductCategorys.Count();}
+                         @for (int i = 0; i <countbegin; i++)
+                        { var url1 = "/" + Model.ProductCategorys[i].SeoAlias + ".pc-" + Model.ProductCategorys[i].Id + ".html";
+                             <li><a href="@url1">@Model.ProductCategorys[i].Name</a></li>
+                        }
                     </ul>
                 </div>
             </div>
+            @if (Model.ProductCategorys.Count() > 7)
+            {
+                <div class="col-lg-2">
+                    <div class="footer_column">
+                        <ul class="footer_list footer_list_2">
+                            @for (int i = 7; i < Model.ProductCategorys.Count(); i++)
+                            {
+                                var url2 = "/" + Model.ProductCategorys[i].SeoAlias + ".pc-" + Model.ProductCategorys[i].Id + ".html";
+                                <li><a href="@url2">@Model.ProductCategorys[i].Name</a></li>
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            }
 
             <div class="col-lg-2">
                 <div class="footer_column">
-                    <ul class="footer_list footer_list_2">
-                        <li><a href="#">Video Games & Consoles</a></li>
-                        <li><a href="#">Accessories</a></li>
-                        <li><a href="#">Cameras & Photos</a></li>
-                        <li><a href="#">Hardware</a></li>
-                        <li><a href="#">Computers & Laptops</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-lg-2">
-                <div class="footer_column">
-                    <div class="footer_title">Customer Care</div>
+                    <div class="footer_title">Thông tin</div>
                     <ul class="footer_list">
-                        <li><a href="#">My Account</a></li>
-                        <li><a href="#">Order Tracking</a></li>
-                        <li><a href="#">Wish List</a></li>
-                        <li><a href="#">Customer Services</a></li>
-                        <li><a href="#">Returns / Exchange</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Product Support</a></li>
+
+                        <li><a href="/about.html">Giới thiệu</a></li>
+                        <li><a href="/contact.html">Liên hệ</a></li>
+                        <li><a href="/policy.html">Chính sách</a></li>
+                        <li><a href="/blog.html">Tin tức</a></li>
                     </ul>
                 </div>
             </div>
-
         </div>
     </div>
 </footer>

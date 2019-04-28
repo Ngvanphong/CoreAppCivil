@@ -34,5 +34,8 @@ namespace TeduCoreApp.Data.ViewModels.Product
 
         [MaxLength(255)]
         public string SeoDescription { set; get; }
+
+        public virtual ICollection<ProductViewModel> Products { set; get; }
+
     }
 }

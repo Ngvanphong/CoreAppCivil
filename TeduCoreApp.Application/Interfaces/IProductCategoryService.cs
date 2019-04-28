@@ -17,6 +17,8 @@ namespace TeduCoreApp.Application.Interfaces
 
         List<ProductCategoryViewModel> GetAll();
 
+        List<ProductCategoryViewModel> GetAllIncludeProduct();
+
         List<ProductCategoryViewModel> GetAll(string keyword);
 
         List<ProductCategoryViewModel> GetAllByParentId(int parentId);
@@ -34,5 +36,7 @@ namespace TeduCoreApp.Application.Interfaces
         List<ProductCategoryViewModel> GetCategoryFooter(int top);
 
         void SaveChanges();
+
+        List<ProductCategoryViewModel> GetCategoryHeader();
     }
 }

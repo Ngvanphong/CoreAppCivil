@@ -12,17 +12,10 @@ namespace TeduCoreApp.Models
     {
     public List<SlideViewModel> ListSlide { get; set; }
 
-
-
-    public List<ProductViewModel> ListNewProduct { get; set; }
-  
-    public List<ProductViewModel> ListHotProduct { get; set; }
-
-    public List<ProductViewModel> ListPromotionProduct { get; set; }
-   
-    public List<BlogViewModel> ListBlog { get; set; }
-
     public string DomainApi { get; set; }
 
+    public List<ProductCategoryViewModel> ListCategory { get; set; }
+        
+   
     }
 }

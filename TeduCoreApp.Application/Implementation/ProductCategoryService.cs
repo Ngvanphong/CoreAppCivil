@@ -69,6 +69,21 @@ namespace TeduCoreApp.Application.Implementation
 
         }
 
+        public List<ProductCategoryViewModel> GetAllIncludeProduct()
+        {
+            List<ProductCategory> allCategory = _productCategoryRepository.FindAll(c=>c.Products).OrderBy(x => x.ParentId).ToList();
+            List<ProductCategory> listCategory = new List<ProductCategory> { };
+            foreach(var item in allCategory)
+            {
+                if (item.Products.Count() >= 1)
+                {
+                    listCategory.Add(item);
+                }
+            }
+
+            return _mapper.Map<List<ProductCategoryViewModel>>(listCategory);
+        }
+
         public ProductCategoryViewModel GetById(int id)
         {
             return _mapper.Map<ProductCategoryViewModel>(_productCategoryRepository.FindById(id));
@@ -81,14 +96,25 @@ namespace TeduCoreApp.Application.Implementation
 
         public List<ProductCategoryViewModel> GetCategoryFooter(int top)
         {
-            var all = _productCategoryRepository.FindAll(x=>x.Status==Status.Active);
-            var parentAll = _productCategoryRepository.FindAll(x => x.ParentId == null&& x.Status == Status.Active);
+            var all = _productCategoryRepository.FindAll(x => x.Status == Status.Active);
             List<ProductCategory> parent = new List<ProductCategory>();
-            foreach(var item in parentAll)
+            foreach (var item in all)
             {
-                if (all.Except(parentAll).Any(x => x.ParentId == item.Id)) parent.Add(item);
-            }
+                if (all.Any(x => x.ParentId == item.Id)) parent.Add(item);
+            }            
             var listCategoryHasHref = all.Except(parent).OrderBy(x=>x.Name).Take(top);
+            return _mapper.Map<List<ProductCategoryViewModel>>(listCategoryHasHref.ToList());
+        }
+
+        public List<ProductCategoryViewModel> GetCategoryHeader()
+        {
+            var all = _productCategoryRepository.FindAll(x => x.Status == Status.Active);           
+            List<ProductCategory> parent = new List<ProductCategory>();
+            foreach (var item in all)
+            {
+                if (all.Any(x => x.ParentId == item.Id)) parent.Add(item);
+            }
+            var listCategoryHasHref = all.Except(parent).OrderBy(x => x.Name);
             return _mapper.Map<List<ProductCategoryViewModel>>(listCategoryHasHref.ToList());
         }
 

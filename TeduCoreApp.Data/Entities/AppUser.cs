@@ -19,8 +19,7 @@ namespace TeduCoreApp.Data.Entities
         public AppUser(AppUserViewModel appUserVm) : base(appUserVm.UserName)
         {
             FullName = appUserVm.FullName;
-            BirthDay = appUserVm.BirthDay;
-            Balance = appUserVm.Balance;
+            BirthDay = appUserVm.BirthDay;          
             Avatar = appUserVm.Avatar;
             Status = appUserVm.Status;
             PhoneNumber = appUserVm.PhoneNumber;
@@ -33,7 +32,6 @@ namespace TeduCoreApp.Data.Entities
 
         public DateTime? BirthDay { set; get; }
 
-        public decimal Balance { get; set; }
 
         public string Avatar { get; set; }
 

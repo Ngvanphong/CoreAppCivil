@@ -25,17 +25,6 @@
 
         <header class="header">
             <!-- Top Bar -->
-            <div class="top_bar">
-                <div class="container">
-                    <div class="row">
-                        <div class="col d-flex flex-row">
-                            <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="~/client-side/images/phone.png" alt=""></div>+38 068 005 3570</div>
-                            <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="~/client-side/images/mail.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>                           
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- Header Main -->
             @await Component.InvokeAsync("Header")
 
@@ -45,11 +34,11 @@
 
             <!-- Menu -->
             @await Component.InvokeAsync("MainNavigation")
-           
+
 
         </header>
 
-       @RenderBody()
+        @RenderBody()
 
         <!-- Footer -->
 
@@ -92,11 +81,10 @@
     <script src="~/client-side/plugins/greensock/animation.gsap.min.js"></script>
     <script src="~/client-side/plugins/greensock/ScrollToPlugin.min.js"></script>
     <script src="~/client-side/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-    <script src="~/client-side/plugins/slick-1.8.0/slick.js"></script>
     <script src="~/client-side/plugins/easing/easing.js"></script>
     <script src="~/client-side/js/custom.js"></script>
-</body>
 
+</body>
 </html>
 
 @RenderSection("Scripts", required: false)

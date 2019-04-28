@@ -17,7 +17,6 @@ namespace TeduCoreApp.Data.ViewModels.Identity
 
         public DateTime? BirthDay { set; get; }
 
-        public decimal Balance { get; set; }
 
         public string Avatar { get; set; }
 

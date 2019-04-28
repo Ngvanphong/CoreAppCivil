@@ -54,5 +54,7 @@ namespace TeduCoreApp.Data.ViewModels.Product
        
         public virtual PantnerViewModel Pantner { get; set; }
 
+
+
     }
 }

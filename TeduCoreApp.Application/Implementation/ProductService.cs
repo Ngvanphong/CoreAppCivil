@@ -125,7 +125,7 @@ namespace TeduCoreApp.Application.Implementation
             return _mapper.Map<List<ProductViewModel>>(_productRepository.FindAll().OrderByDescending(x => x.DateCreated).ToList());
         }
 
-        public List<ProductViewModel> GetAll(int? categoryId, string hotPromotion, string keyword, int page, int pageSize, out int totalRow)
+        public List<ProductViewModel> GetAll(int? categoryId, string keyword, int page, int pageSize, out int totalRow)
         {
             var listProduct = _productRepository.FindAll(c => c.ProductCategory);
             if (categoryId.HasValue)
@@ -160,7 +160,7 @@ namespace TeduCoreApp.Application.Implementation
 
         public ProductViewModel GetById(int id)
         {
-            return _mapper.Map<ProductViewModel>(_productRepository.FindById(id,c=>c.ProductCategory));
+            return _mapper.Map<ProductViewModel>(_productRepository.FindById(id, c =>  c.ProductCategory, d=>d.Pantner));
         }
 
        

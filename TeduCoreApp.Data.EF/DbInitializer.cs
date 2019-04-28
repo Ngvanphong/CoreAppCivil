@@ -51,8 +51,7 @@ namespace TeduCoreApp.Data.EF
                 {
                     UserName = "ngvanphong",
                     FullName = "Nguyễn Văn Phong",
-                    Email = "ngvanphong2012@gmail.com",
-                    Balance = 0,
+                    Email = "ngvanphong2012@gmail.com",                 
                 }, "vanphong2012");
                 var user = await _userManager.FindByNameAsync("ngvanphong"); 
                 
@@ -99,8 +98,7 @@ namespace TeduCoreApp.Data.EF
                 {
                     new Slide() {Name="Slide 1",Image="/client-side/images/slider/slide-1.jpg",Url="#",DisplayOrder = 0,Status = true },
                     new Slide() {Name="Slide 2",Image="/client-side/images/slider/slide-2.jpg",Url="#",DisplayOrder = 1,Status = true },
-                  
-              
+                                
                 };
                 _context.Slides.AddRange(slides);
                 _context.SaveChanges();
