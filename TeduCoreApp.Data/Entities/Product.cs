@@ -64,5 +64,10 @@ namespace TeduCoreApp.Data.Entities
         public string SeoKeywords { set; get; }
         [MaxLength(255)]
         public string SeoDescription { set; get; }
+
+        public int? PantnerId { set; get; }
+
+        [ForeignKey("PantnerId")]
+        public virtual Pantner Pantner { get; set; }
     }
 }

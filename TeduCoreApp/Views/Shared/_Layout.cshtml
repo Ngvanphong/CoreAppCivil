@@ -1,150 +1,103 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Basic page needs -->
+    <title>OneTech</title>
     <meta charset="utf-8">
-    <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <![endif]-->
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-    <title>@ViewData["Title"]</title>
-    <meta name="description" content="@ViewData["MetaDescription"]">
-    <meta name="keywords" content="@ViewData["MetaKeyword"]" />
-
-    <!-- Mobile specific metas  -->
+    <meta name="description" content="OneTech shop project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Favicon  -->
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
-    @*/*Google Fonts*/*@
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:700,600,800,400' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700' rel='stylesheet' type='text/css'>
-
-    <!-- CSS Style -->
-    <link href="~/css/site.min.css" rel="stylesheet" />
-
-    @*<link rel="stylesheet" href="~/client-side/style.css">
-
-        <link href="~/lib/alertifyjs/build/css/alertify.css" rel="stylesheet" />
-
-        <link href="~/lib/jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet" />*@
+    <link rel="stylesheet" type="text/css" href="~/client-side/styles/bootstrap4/bootstrap.min.css">
+    <link href="~/client-side/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="~/client-side/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/client-side/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="~/client-side/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/client-side/plugins/slick-1.8.0/slick.css">
+    <link rel="stylesheet" type="text/css" href="~/client-side/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/client-side/styles/responsive.css">
+    
 </head>
 
-<body class="cms-index-index cms-home-page">
+<body>
 
-    <!-- mobile menu -->
-    @await Component.InvokeAsync("MobileMenu")
-    <div id="page">
-        <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+    <div class="super_container">
+
         <!-- Header -->
-        @Html.Partial("_Header.cshtml")
-        <!-- end header -->
-        <!-- Navigation -->
-        @await Component.InvokeAsync("MainNavigation")
-        <!-- end nav -->
 
-        @RenderBody()
+        <header class="header">
+            <!-- Top Bar -->
+            <div class="top_bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col d-flex flex-row">
+                            <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="~/client-side/images/phone.png" alt=""></div>+38 068 005 3570</div>
+                            <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="~/client-side/images/mail.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Header Main -->
+            @await Component.InvokeAsync("Header")
+
+            <!-- Main Navigation -->
+
+            @await Component.InvokeAsync("MobileMenu")
+
+            <!-- Menu -->
+            @await Component.InvokeAsync("MainNavigation")
+           
+
+        </header>
+
+       @RenderBody()
 
         <!-- Footer -->
-        @await Component.InvokeAsync("Footer");
-       
-    </div>
 
-    <!-- jquery js -->
-    <script type="text/javascript" src="~/client-side/js/jquery.min.js"></script>
-    <script src="~/lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-    <!-- bootstrap js -->
-    <script type="text/javascript" src="~/client-side/js/bootstrap.min.js"></script>
-    <!-- mustache js -->
-    <script src="~/lib/mustache/mustache.min.js"></script>
-    <!-- alertify js -->
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        @await Component.InvokeAsync("Footer")
+        <!-- Copyright -->
 
-    <!--signalr js-->
-    <script src="~/lib/signalr/dist/browser/signalr.min.js"></script>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
 
-    <script src="~/js/site.min.js"></script>
-
-    @*<!-- End Footer -->
-
-        <!-- owl.carousel.min js -->
-        <script type="text/javascript" src="~/client-side/js/owl.carousel.min.js"></script>
-
-        <!-- jtv-jtv-mobile-menu js -->
-        <script type="text/javascript" src="~/client-side/js/jtv-mobile-menu.js"></script>
-
-        <!-- countdown js -->
-        <script type="text/javascript" src="~/client-side/js/countdown.js"></script>
-
-        <!-- main js -->
-        <script type="text/javascript" src="~/client-side/js/main.js"></script>
-
-        <!-- rev-slider js -->
-        <script type="text/javascript" src="~/client-side/js/rev-slider.js"></script>
-
-        <script src="~/lib/alertifyjs/build/alertify.min.js"></script>
-        <!-- twbs pagination-->
-        <script src="~/lib/twbs-pagination/jquery.twbsPagination.min.js"></script>
-
-        <script src="~/lib/jquery-number-master/jquery.number.min.js"></script>
-
-        <script src="~/lib/signalr/dist/browser/signalr.min.js"></script>
-
-        <script src="~/app/shared/notification.js"></script>*@
-    <script>
-        var notifications = new notification();
-        notifications.init();
-    </script>
-    @*<script src="~/app/controllers/product/shoppingCard.js"></script>
-        <script src="~/app/shared/common.js"></script>
-        <script src="~/app/controllers/product/wishlistCart.js"></script>*@
-    <script>
-        var shopingCarts = new shoppingCard();
-        shopingCarts.initializer();
-        var shareCommons = new shareCommon();
-        shareCommons.initilizer();
-        var wishlistItemControllers = new wistlistCartController();
-        wishlistItemControllers.initilizer();
-    </script>
-
-    @RenderSection("Scripts", required: false)
-
-    <!--Newsletter Popup Start-->
-    <div id="myModal" class="modal fade">
-        <div class="modal-dialog newsletter-popup">
-            <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <div class="modal-body">
-                    <h4 class="modal-title">Signup Newsletter</h4>
-                    <form id="newsletter-form" method="post" action="#">
-                        <div class="content-subscribe">
-                            <div class="form-subscribe-header">
-                                <label>
-                                    Subscribe to our newsletters and don't miss new arrivals,<br>
-                                    the latest fashion updates and our promotions.
-                                </label>
+                        <div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
+                            <div class="copyright_content">
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> All rights reserved
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </div>
-                            <div class="input-box">
-                                <input type="text" class="input-text newsletter-subscribe" title="Sign up for our newsletter" name="email" placeholder="Enter your email address">
-                            </div>
-                            <div class="actions">
-                                <button class="button-subscribe" title="Subscribe" type="submit">Subscribe</button>
+                            <div class="logos ml-sm-auto">
+                                <ul class="logos_list">
+                                    <li><a href="#"><img src="images/logos_1.png" alt=""></a></li>
+                                    <li><a href="#"><img src="images/logos_2.png" alt=""></a></li>
+                                    <li><a href="#"><img src="images/logos_3.png" alt=""></a></li>
+                                    <li><a href="#"><img src="images/logos_4.png" alt=""></a></li>
+                                </ul>
                             </div>
                         </div>
-                    </form>
-                    <div class="subscribe-bottom">
-                        <input name="notshowpopup" id="notshowpopup" type="checkbox">
-                        Don’t show this popup again
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--End of Newsletter Popup-->
+
+    <script src="~/client-side/js/jquery-3.3.1.min.js"></script>
+    <script src="~/client-side/styles/bootstrap4/popper.js"></script>
+    <script src="~/client-side/styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="~/client-side/plugins/greensock/TweenMax.min.js"></script>
+    <script src="~/client-side/plugins/greensock/TimelineMax.min.js"></script>
+    <script src="~/client-side/plugins/scrollmagic/ScrollMagic.min.js"></script>
+    <script src="~/client-side/plugins/greensock/animation.gsap.min.js"></script>
+    <script src="~/client-side/plugins/greensock/ScrollToPlugin.min.js"></script>
+    <script src="~/client-side/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="~/client-side/plugins/slick-1.8.0/slick.js"></script>
+    <script src="~/client-side/plugins/easing/easing.js"></script>
+    <script src="~/client-side/js/custom.js"></script>
 </body>
+
 </html>
+
+@RenderSection("Scripts", required: false)
+

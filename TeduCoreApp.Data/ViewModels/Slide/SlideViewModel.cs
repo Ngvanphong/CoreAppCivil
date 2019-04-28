@@ -29,6 +29,6 @@ namespace TeduCoreApp.Data.ViewModels.Slide
 
         public string Content { set; get; }
 
-        public bool OrtherPageHome { get; set; }
+        
     }
 }

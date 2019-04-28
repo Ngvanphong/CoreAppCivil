@@ -34,13 +34,13 @@ namespace TeduCoreApp.Controllers
             
             HomeViewModel homeVm = new HomeViewModel() { };           
            
-            homeVm.ListSlide = _slideService.GetAll(false);
+            homeVm.ListSlide = _slideService.GetAll();
             
             homeVm.ListBlog = _blogService.GetAllForHome(3);
             homeVm.DomainApi = _config["DomainApi:Domain"];
-            ViewBag.HomeTitle = _systemConfig.Detail("HomeTitle").Value1;
-            ViewBag.HomeMetaDescription = _systemConfig.Detail("HomeMetaDescription").Value1;
-            ViewBag.HomeMetaKeyword = _systemConfig.Detail("HomeMetaKeyword").Value1;
+            //ViewBag.HomeTitle = _systemConfig.Detail("HomeTitle").Value1;
+            //ViewBag.HomeMetaDescription = _systemConfig.Detail("HomeMetaDescription").Value1;
+            //ViewBag.HomeMetaKeyword = _systemConfig.Detail("HomeMetaKeyword").Value1;
             return View(homeVm);
         }
 

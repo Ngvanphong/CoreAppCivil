@@ -25,7 +25,7 @@ namespace TeduCoreApp.Data.Entities
             DisplayOrder = slideVm.DisplayOrder;
             Status = slideVm.Status;
             Content = slideVm.Content;
-            OrtherPageHome = slideVm.OrtherPageHome;
+            
         }
         [StringLength(250)]
         [Required]
@@ -47,6 +47,6 @@ namespace TeduCoreApp.Data.Entities
 
         public string Content { set; get; }
        
-        public bool OrtherPageHome { get; set; }
+      
     }
 }

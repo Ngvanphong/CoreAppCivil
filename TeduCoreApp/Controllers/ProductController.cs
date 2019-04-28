@@ -31,7 +31,7 @@ namespace TeduCoreApp.Controllers
         {
             ProductIndexViewModel product = new ProductIndexViewModel() { };
             product.ProductCategory = _productCategoryService.GetById(id);
-            product.Slides = _slideService.GetAll(true);
+            product.Slides = _slideService.GetAll();
            
             product.Tags = _productService.GetAllTag(15);
             product.DomainApi = _config["DomainApi:Domain"];

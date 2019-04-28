@@ -16,9 +16,6 @@ namespace TeduCoreApp.Data.ViewModels.Pantner
         [StringLength(250)]
         public string Image { get; set; }
 
-        [StringLength(250)]
-        public string Url { get; set; }
-
         public Status Status { set; get; }
     }
 }

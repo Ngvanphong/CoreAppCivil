@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using TeduCoreApp.Data.Enums;
+using TeduCoreApp.Data.ViewModels.Pantner;
+
 
 namespace TeduCoreApp.Data.ViewModels.Product
 {
@@ -47,6 +49,10 @@ namespace TeduCoreApp.Data.ViewModels.Product
         public DateTime DateModified { set; get; }
 
         public Status Status { set; get; }
+
+        public int? PantnerId { set; get; }
+       
+        public virtual PantnerViewModel Pantner { get; set; }
 
     }
 }

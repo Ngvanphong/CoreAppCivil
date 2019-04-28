@@ -46,13 +46,13 @@ namespace TeduCoreApp.Application.Implementation
                 slides = slides.Where(x => x.Name.Contains(filter));
             }
             totalRow = slides.Count();
-            slides = slides.OrderByDescending(x => x.OrtherPageHome).Skip((page - 1) * pageSize).Take(pageSize);
+            slides = slides.OrderByDescending(x => x.Id).Skip((page - 1) * pageSize).Take(pageSize);
             return _mapper.Map<List<SlideViewModel>>(slides.ToList());
         }
 
-        public List<SlideViewModel> GetAll(bool ortherPageHome)
+        public List<SlideViewModel> GetAll()
         {
-            return _mapper.Map<List<SlideViewModel>>(_slideRepository.FindAll(x => x.OrtherPageHome == ortherPageHome && x.Status == true)
+            return _mapper.Map<List<SlideViewModel>>(_slideRepository.FindAll(x=>x.Status == true)
                 .OrderBy(x => x.DisplayOrder).ToList());
         }
 

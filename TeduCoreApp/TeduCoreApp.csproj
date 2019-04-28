@@ -106,7 +106,9 @@
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
     
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" PrivateAssets="All" />
+    
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" PrivateAssets="All" />
     <PackageReference Include="PaulMiami.AspNetCore.Mvc.Recaptcha" Version="1.2.1" />
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="1.1.0" />
   </ItemGroup>
@@ -162,6 +164,36 @@
     <None Include="node_modules\mustache\wrappers\yui3\mustache.js.post" />
     <None Include="node_modules\mustache\wrappers\yui3\mustache.js.pre" />
     <None Include="wwwroot\app\shared\notification.js" />
+    <None Include="wwwroot\client-side\images\user.svg" />
+    <None Include="wwwroot\client-side\js\blog_custom.js" />
+    <None Include="wwwroot\client-side\js\blog_single_custom.js" />
+    <None Include="wwwroot\client-side\js\cart_custom.js" />
+    <None Include="wwwroot\client-side\js\contact_custom.js" />
+    <None Include="wwwroot\client-side\js\custom.js" />
+    <None Include="wwwroot\client-side\js\jquery-3.3.1.min.js" />
+    <None Include="wwwroot\client-side\js\product_custom.js" />
+    <None Include="wwwroot\client-side\js\regular_custom.js" />
+    <None Include="wwwroot\client-side\js\shop_custom.js" />
+    <None Include="wwwroot\client-side\plugins\easing\easing.js" />
+    <None Include="wwwroot\client-side\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400.svg" />
+    <None Include="wwwroot\client-side\plugins\fontawesome-free-5.0.1\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\client-side\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400.svg" />
+    <None Include="wwwroot\client-side\plugins\fontawesome-free-5.0.1\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\client-side\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.svg" />
+    <None Include="wwwroot\client-side\plugins\fontawesome-free-5.0.1\webfonts\fa-solid-900.woff2" />
+    <None Include="wwwroot\client-side\plugins\greensock\animation.gsap.min.js" />
+    <None Include="wwwroot\client-side\plugins\greensock\ScrollToPlugin.min.js" />
+    <None Include="wwwroot\client-side\plugins\greensock\TimelineMax.min.js" />
+    <None Include="wwwroot\client-side\plugins\greensock\TweenMax.min.js" />
+    <None Include="wwwroot\client-side\plugins\Isotope\isotope.pkgd.min.js" />
+    <None Include="wwwroot\client-side\plugins\jquery-ui-1.12.1.custom\jquery-ui.js" />
+    <None Include="wwwroot\client-side\plugins\OwlCarousel2-2.2.1\owl.carousel.js" />
+    <None Include="wwwroot\client-side\plugins\parallax-js-master\parallax.min.js" />
+    <None Include="wwwroot\client-side\plugins\scrollmagic\ScrollMagic.min.js" />
+    <None Include="wwwroot\client-side\plugins\slick-1.8.0\fonts\slick.svg" />
+    <None Include="wwwroot\client-side\plugins\slick-1.8.0\slick.js" />
+    <None Include="wwwroot\client-side\styles\bootstrap4\bootstrap.min.js" />
+    <None Include="wwwroot\client-side\styles\bootstrap4\popper.js" />
     <None Include="wwwroot\lib\alertifyjs\.jshintrc" />
     <None Include="wwwroot\lib\alertifyjs\build\alertify.min.js" />
     <None Include="wwwroot\lib\alertifyjs\build\alertifyjs.zip" />
@@ -227,10 +259,6 @@
     <ProjectReference Include="..\TeduCoreApp.Data\TeduCoreApp.Data.csproj" />
     <ProjectReference Include="..\TeduCoreApp.Infrastructure\TeduCoreApp.Infrastructure.csproj" />
     <ProjectReference Include="..\TeduCoreApp.Utilities\TeduCoreApp.Utilities.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\client-side\" />
   </ItemGroup>
 
 </Project>

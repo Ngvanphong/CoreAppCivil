@@ -423,9 +423,6 @@ namespace TeduCoreApp.Data.EF.Migrations
 
                     b.Property<int>("Status");
 
-                    b.Property<string>("Url")
-                        .HasMaxLength(250);
-
                     b.HasKey("Id");
 
                     b.ToTable("Pantners");
@@ -481,6 +478,8 @@ namespace TeduCoreApp.Data.EF.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
+                    b.Property<int?>("PantnerId");
+
                     b.Property<string>("SeoAlias")
                         .HasColumnType("varchar(255)");
 
@@ -504,6 +503,8 @@ namespace TeduCoreApp.Data.EF.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("PantnerId");
 
                     b.ToTable("Products");
                 });
@@ -717,6 +718,10 @@ namespace TeduCoreApp.Data.EF.Migrations
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TeduCoreApp.Data.Entities.Pantner", "Pantner")
+                        .WithMany("Products")
+                        .HasForeignKey("PantnerId");
                 });
 
             modelBuilder.Entity("TeduCoreApp.Data.Entities.ProductImage", b =>

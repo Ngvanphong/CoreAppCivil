@@ -81,7 +81,7 @@ namespace TeduCoreApp.WebApi.Extensions
             slide.Content = slideVm.Content;
             slide.Description = slideVm.Description;
             slide.DisplayOrder = slideVm.DisplayOrder;
-            slide.OrtherPageHome = slideVm.OrtherPageHome;
+            
         }
 
         public static void UpdatePantner(this Pantner pantner, PantnerViewModel pantnerVm)
@@ -89,7 +89,7 @@ namespace TeduCoreApp.WebApi.Extensions
             pantner.Name = pantnerVm.Name;
             pantner.Image = pantnerVm.Image;
             pantner.Status = pantnerVm.Status;
-            pantner.Url = pantnerVm.Url;
+           
         }
 
         public static void UpdateSystemConfig(this SystemConfig systemConfig, SystemConfigViewModel systemConfigVm)
@@ -119,6 +119,7 @@ namespace TeduCoreApp.WebApi.Extensions
             productDb.SeoKeywords = productVm.SeoKeywords;
             productDb.SeoDescription = productVm.SeoDescription;
             productDb.ThumbnailImage = productVm.ThumbnailImage;
+            productDb.PantnerId = productVm.PantnerId;
         }
     }
 }
