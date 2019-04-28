@@ -887,20 +887,25 @@ $(document).ready(function()
 
 			if($('.viewed_prev').length)
 			{
-				var prev = $('.viewed_prev');
-				prev.on('click', function()
-				{
-					viewedSlider.trigger('prev.owl.carousel');
-				});
+                var prev = $('.viewed_prev');             				
+                    for (var i = 0; i < prev.length; i++) {
+                        prev[i].addEventListener("click", function () {
+                            var id = $(this).data('slidverper');
+                            $("#"+id).trigger('prev.owl.carousel');
+                        });
+                    }									
 			}
 
 			if($('.viewed_next').length)
 			{
-				var next = $('.viewed_next');
-				next.on('click', function()
-				{
-					viewedSlider.trigger('next.owl.carousel');
-				});
+                var next = $('.viewed_next');
+                for (var j = 0; j < next.length; j++) {
+                    next[j].addEventListener("click", function () {
+                        var id = $(this).data('slidvernext');
+                        $("#"+id).trigger('next.owl.carousel');
+                    });
+                }		
+				
 			}
 		}
 	}

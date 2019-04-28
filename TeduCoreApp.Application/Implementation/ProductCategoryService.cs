@@ -9,6 +9,8 @@ using TeduCoreApp.Data.Enums;
 using TeduCoreApp.Data.ViewModels.Product;
 using TeduCoreApp.Infrastructure.Interfaces;
 
+
+
 namespace TeduCoreApp.Application.Implementation
 {
     public class ProductCategoryService : IProductCategoryService
@@ -69,7 +71,7 @@ namespace TeduCoreApp.Application.Implementation
 
         }
 
-        public List<ProductCategoryViewModel> GetAllIncludeProduct()
+        public List<ProductCategoryIndexViewModel> GetAllIncludeProduct()
         {
             List<ProductCategory> allCategory = _productCategoryRepository.FindAll(c=>c.Products).OrderBy(x => x.ParentId).ToList();
             List<ProductCategory> listCategory = new List<ProductCategory> { };
@@ -81,7 +83,7 @@ namespace TeduCoreApp.Application.Implementation
                 }
             }
 
-            return _mapper.Map<List<ProductCategoryViewModel>>(listCategory);
+            return _mapper.Map<List<ProductCategoryIndexViewModel>>(listCategory);
         }
 
         public ProductCategoryViewModel GetById(int id)

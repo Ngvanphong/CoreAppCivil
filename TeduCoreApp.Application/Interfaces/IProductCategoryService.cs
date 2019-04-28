@@ -17,7 +17,7 @@ namespace TeduCoreApp.Application.Interfaces
 
         List<ProductCategoryViewModel> GetAll();
 
-        List<ProductCategoryViewModel> GetAllIncludeProduct();
+        List<ProductCategoryIndexViewModel> GetAllIncludeProduct();
 
         List<ProductCategoryViewModel> GetAll(string keyword);
 

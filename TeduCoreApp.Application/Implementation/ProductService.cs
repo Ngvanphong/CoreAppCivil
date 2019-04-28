@@ -128,6 +128,7 @@ namespace TeduCoreApp.Application.Implementation
         public List<ProductViewModel> GetAll(int? categoryId, string keyword, int page, int pageSize, out int totalRow)
         {
             var listProduct = _productRepository.FindAll(c => c.ProductCategory);
+            
             if (categoryId.HasValue)
             {
                 listProduct = listProduct.Where(x => x.CategoryId == categoryId);

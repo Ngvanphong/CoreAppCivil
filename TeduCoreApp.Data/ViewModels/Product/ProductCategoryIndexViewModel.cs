@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 using TeduCoreApp.Data.Enums;
 
 namespace TeduCoreApp.Data.ViewModels.Product
 {
-    public class ProductCategoryViewModel
+   public class ProductCategoryIndexViewModel
     {
+
         public int Id { get; set; }
 
-
-        [MaxLength(50)]
         public string Name { get; set; }
 
-        [MaxLength(255)]
+       
         public string Description { get; set; }
 
         public int? ParentId { get; set; }
@@ -24,18 +22,17 @@ namespace TeduCoreApp.Data.ViewModels.Product
         public int SortOrder { set; get; }
         public Status Status { set; get; }
 
-        [MaxLength(255)]
+       
         public string SeoPageTitle { set; get; }
 
         public string SeoAlias { set; get; }
 
-        [MaxLength(255)]
+        
         public string SeoKeywords { set; get; }
 
-        [MaxLength(255)]
+       
         public string SeoDescription { set; get; }
 
-        //public virtual ICollection<ProductViewModel> Products { set; get; }
-
+        public virtual ICollection<ProductViewModel> Products { set; get; }
     }
 }

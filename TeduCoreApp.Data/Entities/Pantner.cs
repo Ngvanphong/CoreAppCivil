@@ -12,7 +12,7 @@ namespace TeduCoreApp.Data.Entities
     {
         public Pantner()
         {
-
+            Products = new List<Product>();
         }
         public Pantner(PantnerViewModel pantnerVm)
         {

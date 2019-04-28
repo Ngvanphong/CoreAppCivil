@@ -38,6 +38,8 @@ namespace TeduCoreApp.Application.AutoMapper
             CreateMap<Pantner, PantnerViewModel>();
 
             CreateMap<SystemConfig, SystemConfigViewModel>();
+
+            CreateMap<ProductCategory, ProductCategoryIndexViewModel > ();
         }
     }
 }

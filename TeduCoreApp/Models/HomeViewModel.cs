@@ -14,7 +14,7 @@ namespace TeduCoreApp.Models
 
     public string DomainApi { get; set; }
 
-    public List<ProductCategoryViewModel> ListCategory { get; set; }
+    public List<ProductCategoryIndexViewModel> ListCategory { get; set; }
         
    
     }
