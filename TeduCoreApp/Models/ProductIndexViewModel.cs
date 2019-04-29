@@ -2,6 +2,7 @@
 using TeduCoreApp.Data.ViewModels.Product;
 using TeduCoreApp.Data.ViewModels.Slide;
 using TeduCoreApp.Data.ViewModels.Tag;
+using TeduCoreApp.Utilities.Dtos;
 
 namespace TeduCoreApp.Models
 {
@@ -11,5 +12,7 @@ namespace TeduCoreApp.Models
         public List<TagViewModel> Tags { get; set; }
         public string DomainApi { get; set; }
         public ProductCategoryViewModel ProductCategory { get; set; }
+
+        public WebResultPaging<ProductViewModel> WebResultPaging{set;get;}
     }
 }

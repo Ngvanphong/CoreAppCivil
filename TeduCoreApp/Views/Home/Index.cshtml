@@ -4,10 +4,11 @@
     ViewData["MetaKeyword"] = (string)ViewBag.HomeMetaKeyword;
 }
 @model HomeViewModel
- <!-- Banner -->
+
+<!-- Banner -->
 @section Scripts{
     <script src="~/client-side/plugins/slick-1.8.0/slick.js"></script>
-
+    <script src="~/client-side/js/custom.js"></script>
 }
 <div class="banner_2">
 
@@ -68,7 +69,7 @@
                     <div class="viewed_slider_container">
 
                         <!-- Recently Viewed Slider -->
-                        <div id="@category.Id"  class="owl-carousel owl-theme viewed_slider">
+                        <div id="@category.Id" class="owl-carousel owl-theme viewed_slider">
                             @foreach (var product in category.Products)
                             {
                                 var urlproduct = "/" + product.SeoAlias + ".p-" + product.Id + ".html";

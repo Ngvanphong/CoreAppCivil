@@ -13,8 +13,6 @@ namespace TeduCoreApp.Models
 
         public List<ProductViewModel> ProductRelate { get; set; }
 
-        public List<ProductViewModel> ProductUpsell { get; set; }
-
         public List<TagViewModel> ProductTags { set; get; }
 
 

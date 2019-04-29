@@ -109,9 +109,13 @@ namespace TeduCoreApp.Application.Implementation
             _productRepository.Remove(id);
         }
 
-        public List<string> GetProductName(string productName)
+        public List<string> GetProductName(string productName,string categoryid)
         {
             var listProduct = _productRepository.FindAll(x => x.Name.Contains(productName));
+            if (!string.IsNullOrEmpty(categoryid))
+            {
+                listProduct = listProduct.Where(x => x.CategoryId == (int.Parse(categoryid)));
+            }
             List<string> listNames = new List<string>();
             foreach (var item in listProduct)
             {
@@ -174,9 +178,13 @@ namespace TeduCoreApp.Application.Implementation
             return _mapper.Map<List<ProductViewModel>>(query.ToList());
         }
 
-        public List<ProductViewModel> GetAllByNamePaging(string Name, int page, int pageSize, out int totalRow)
+        public List<ProductViewModel> GetAllByNamePaging(string Name,string categoryId, int page, int pageSize, out int totalRow)
         {
-            var query = _productRepository.FindAll(x => x.Status == Data.Enums.Status.Active &&x.Name.Contains(Name));          
+            var query = _productRepository.FindAll(x => x.Status == Data.Enums.Status.Active &&x.Name.Contains(Name));
+            if (!string.IsNullOrEmpty(categoryId))
+            {
+                query = query.Where(x => x.CategoryId == (int.Parse(categoryId)));
+            }
             totalRow = query.Count();
             query = query.OrderBy(x=>x.Name).Skip((page - 1) * pageSize).Take(pageSize);
             return _mapper.Map<List<ProductViewModel>>(query.ToList());

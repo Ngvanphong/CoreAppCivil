@@ -17,7 +17,7 @@ namespace TeduCoreApp.Application.Interfaces
 
         void Delete(int id);
 
-        List<string> GetProductName(string productName);
+        List<string> GetProductName(string productName,string categoryid);
 
         List<ProductViewModel> GetAll();
 
@@ -35,7 +35,7 @@ namespace TeduCoreApp.Application.Interfaces
 
         List<ProductViewModel> GetAllByCategoryPaging(int categoryId, int page, int pageSize, out int totalRow);
 
-        List<ProductViewModel> GetAllByNamePaging(string Name, int page, int pageSize, out int totalRow);
+        List<ProductViewModel> GetAllByNamePaging(string Name,string categoryId, int page, int pageSize, out int totalRow);
 
         List<ProductViewModel> GetProductRelate(int categoryId, int number);
 

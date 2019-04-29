@@ -27,14 +27,22 @@ namespace TeduCoreApp.Controllers
         }
 
         [Route("{alias}.pc-{id}.html")] 
-        public IActionResult Index(int id)
+        public IActionResult Index(int id, int pageSize=20, int page = 1)
         {
             ProductIndexViewModel product = new ProductIndexViewModel() { };
             product.ProductCategory = _productCategoryService.GetById(id);
             product.Slides = _slideService.GetAll();
-           
+    
             product.Tags = _productService.GetAllTag(15);
             product.DomainApi = _config["DomainApi:Domain"];
+            List<ProductViewModel> productLists = _productService.GetAllByCategoryPaging(id, page, pageSize, out int totalRows);
+            product.WebResultPaging=new WebResultPaging<ProductViewModel>()
+            {
+                Items = productLists,
+                PageIndex = page,
+                PageSize = pageSize,
+                TotalRows = totalRows,
+            };
             return View(product);
         }
 
@@ -54,19 +62,19 @@ namespace TeduCoreApp.Controllers
 
         [Route("product/search")]
         [HttpGet]
-        public IActionResult Search(string term)
+        public IActionResult Search(string term,string categoryid)
         {
-            List<string> listNames = _productService.GetProductName(term);
+            List<string> listNames = _productService.GetProductName(term, categoryid);
             return new OkObjectResult(new { data = listNames });
         }
 
         [Route("product/search.html")]
         [HttpGet]
-        public IActionResult SearchProduct(string searchProduct, int page=1,int pageSize=9)
+        public IActionResult SearchProduct(string searchProduct,string categoryid, int page=1,int pageSize=9)
         {
             ViewBag.SearchName = searchProduct;
             ViewBag.DomainApi = _config["DomainApi:Domain"];
-            List<ProductViewModel> products = _productService.GetAllByNamePaging(searchProduct, page, pageSize, out int totalRows);
+            List<ProductViewModel> products = _productService.GetAllByNamePaging(searchProduct,categoryid, page, pageSize, out int totalRows);
             WebResultPaging<ProductViewModel> resultPagging =new WebResultPaging<ProductViewModel>()
             {
                 Items = products,

@@ -29,22 +29,23 @@
                 <div class="header_search">
                     <div class="header_search_content">
                         <div class="header_search_form_container">
-                            <form action="#" class="header_search_form clearfix">
-                                <input type="search" required="required" class="header_search_input" placeholder="Tìm kiếm sản phẩm...">
+                            <form action="/product/search.html" id="search_mini_form" name="Categories" class="header_search_form clearfix">
+                                <input type="search" required="required" name="searchProduct" id="search" class="header_search_input" placeholder="Tìm kiếm sản phẩm...">
+                                <input type="hidden"  required="required" name="categoryid" id="categoryid" value="" >
                                 <div class="custom_dropdown">
                                     <div class="custom_dropdown_list">
                                         <span class="custom_dropdown_placeholder clc">Danh mục</span>
                                         <i class="fas fa-chevron-down"></i>
                                         <ul class="custom_list clc">
-                                            <li><a class="clc" data-categoryid="all" href="#">Tất cả</a></li>
+                                            <li><a class="clc chosecategory" data-categoryid="" href="#">Tất cả</a></li>
                                             @foreach (var item in Model.listProductCategory)
                                             {
-                                                <li><a class="clc" data-categoryid="@item.Id" href="#">@item.Name</a></li>
+                                                <li><a class="clc chosecategory" data-categoryid="@item.Id" href="#">@item.Name</a></li>
                                             }
                                         </ul>
                                     </div>
                                 </div>
-                                <button type="submit" class="header_search_button trans_300" value="Submit"><img src="~/client-side/images/search.png" alt=""></button>
+                                <button type="submit" id="btnSearchProduct" class="header_search_button trans_300" value="Submit"><img src="~/client-side/images/search.png" alt=""></button>
                             </form>
                         </div>
                     </div>

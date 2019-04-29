@@ -11,10 +11,16 @@
     <link rel="stylesheet" type="text/css" href="~/client-side/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="~/client-side/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
     <link rel="stylesheet" type="text/css" href="~/client-side/plugins/OwlCarousel2-2.2.1/animate.css">
+
+    
+    <link href="~/lib/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" />
+
     <link rel="stylesheet" type="text/css" href="~/client-side/plugins/slick-1.8.0/slick.css">
     <link rel="stylesheet" type="text/css" href="~/client-side/styles/main_styles.css">
     <link rel="stylesheet" type="text/css" href="~/client-side/styles/responsive.css">
-    
+
+
+
 </head>
 
 <body>
@@ -82,8 +88,14 @@
     <script src="~/client-side/plugins/greensock/ScrollToPlugin.min.js"></script>
     <script src="~/client-side/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
     <script src="~/client-side/plugins/easing/easing.js"></script>
-    <script src="~/client-side/js/custom.js"></script>
 
+
+    <script src="~/lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script src="~/app/shared/common.js"></script>
+    <script>       
+        var shareCommons = new shareCommon();
+        shareCommons.initilizer();       
+    </script>
 </body>
 </html>
 
