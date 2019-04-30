@@ -24,7 +24,7 @@ namespace TeduCoreApp.Controllers
         }
 
         [Route("bt-{id}.html")]
-        public IActionResult Index(string id, int page = 1, int pageSize = 3)
+        public IActionResult Index(string id, int page = 1, int pageSize = 9)
         {
             BlogTagIndexViewModel blogTagIndex = new BlogTagIndexViewModel() { };
             blogTagIndex.ResultPagging.Items = _blogService.GetBlogByTagPagging(id,page, pageSize, out int totalRows);

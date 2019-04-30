@@ -69,7 +69,7 @@ namespace TeduCoreApp.Controllers
 
         [Route("product/search.html")]
         [HttpGet]
-        public IActionResult SearchProduct(string searchProduct,string categoryid, int page=1,int pageSize=9)
+        public IActionResult SearchProduct(string searchProduct,string categoryid, int page=1,int pageSize=20)
         {
             ViewBag.SearchName = searchProduct;
             ViewBag.DomainApi = _config["DomainApi:Domain"];
