@@ -38,7 +38,7 @@
         </div>
         <ul class="pagination">
 
-            @if (Model.ResultPagging.TotalRows > 1)
+            @if (Model.ResultPagging.TotalPages > 1)
             {
                 var startPageIndex = Math.Max(1, Model.ResultPagging.PageIndex - 8 / 2);
                 var endPageIndex = Math.Min(Model.ResultPagging.TotalPages, Model.ResultPagging.PageIndex + 8 / 2);

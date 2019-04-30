@@ -57,7 +57,7 @@
                     <div class="shop_page_nav d-flex flex-row">
                         <ul class="pagination">
 
-                            @if (Model.TotalRows > 1)
+                            @if (Model.TotalRows > 0)
                             {
                                 var startPageIndex = Math.Max(1, Model.PageIndex - 8 / 2);
                                 var endPageIndex = Math.Min(Model.TotalPages, Model.PageIndex + 8 / 2);
