@@ -15,13 +15,14 @@ namespace TeduCoreApp.Controllers
         private ISlideService _slideService;        
         private IConfiguration _config;
         private IProductCategoryService _productCategoryService;
+        private IPantnerService _pantnerService;
 
         public ProductController(IProductService productService, ISlideService slideService,
-            IConfiguration config,IProductCategoryService productCategoryService)
+            IConfiguration config,IProductCategoryService productCategoryService, IPantnerService pantnerService)
         {
             _productService = productService;
             _slideService = slideService;
-           
+            _pantnerService = pantnerService;
             _config = config;
             _productCategoryService = productCategoryService;
         }
@@ -30,9 +31,7 @@ namespace TeduCoreApp.Controllers
         public IActionResult Index(int id, int pageSize=20, int page = 1)
         {
             ProductIndexViewModel product = new ProductIndexViewModel() { };
-            product.ProductCategory = _productCategoryService.GetById(id);
-            product.Slides = _slideService.GetAll();
-    
+            product.ProductCategory = _productCategoryService.GetById(id);           
             product.Tags = _productService.GetAllTag(15);
             product.DomainApi = _config["DomainApi:Domain"];
             List<ProductViewModel> productLists = _productService.GetAllByCategoryPaging(id, page, pageSize, out int totalRows);
@@ -83,6 +82,24 @@ namespace TeduCoreApp.Controllers
                 TotalRows = totalRows,
             };
             return View(resultPagging);
+        }
+
+        [Route("pantner-{id}.html")]
+        public IActionResult ProductPantner(int id, int pageSize = 20, int page = 1)
+        {
+            ProductPantnerViewModel product = new ProductPantnerViewModel() { };             
+            product.Tags = _productService.GetAllTag(15);
+            product.DomainApi = _config["DomainApi:Domain"];
+            List<ProductViewModel> productLists = _productService.GetAllByPantner(id, page, pageSize, out int totalRows);
+            product.Pantner = _pantnerService.GetById(id);
+            product.WebResultPaging = new WebResultPaging<ProductViewModel>()
+            {
+                Items = productLists,
+                PageIndex = page,
+                PageSize = pageSize,
+                TotalRows = totalRows,
+            };
+            return View(product);
         }
 
     }

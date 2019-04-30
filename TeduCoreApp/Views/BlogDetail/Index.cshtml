@@ -6,4 +6,36 @@
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<head>
+    <link rel="stylesheet" type="text/css" href="~/client-side/styles/regular_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/client-side/styles/regular_responsive.css">
+</head>
+@section Scripts{
+    <script src="~/client-side/js/custom.js"></script>
+}
 @model BlogDetailIndexViewModel;
+<div class="single_post">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+
+                <div class="single_post_title">@Model.Bog.Name</div>
+                <div class="single_post_text">
+                    Ngày tạo: @Model.Bog.DateCreated/Tag bài viết:@foreach (var item in Model.TagsForBlogDetail)
+                    {
+                        var url = "/bt-" + item.Id + ".html";
+                        <a href="@url">@item.Name;</a>
+                    }
+
+                </div>
+                <div class="single_post_text imageReponsiteContent">
+                    @Html.Raw(Model.Bog.Content)
+                </div>
+                <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="" data-numposts="15"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2"></script>

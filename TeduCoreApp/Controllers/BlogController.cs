@@ -23,7 +23,7 @@ namespace TeduCoreApp.Controllers
             _config = config;
         }
         [Route("blog.html")]
-        public IActionResult Index(int page=1,int pageSize=3)
+        public IActionResult Index(int page=1,int pageSize=9)
         {
             BlogIndexViewModel blogIndex = new BlogIndexViewModel() { };
             blogIndex.ResultPagging.Items = _blogService.GetAllPaggingByActive(page, pageSize, out int totalRows);
@@ -31,8 +31,7 @@ namespace TeduCoreApp.Controllers
             blogIndex.ResultPagging.PageSize = pageSize;
             blogIndex.ResultPagging.TotalRows = totalRows;
             blogIndex.DomainApi= _config["DomainApi:Domain"];
-            blogIndex.Tags = _blogService.GetTagBlogTop(15);
-            
+
             return View(blogIndex);
         }
     }

@@ -32,7 +32,7 @@ namespace TeduCoreApp.Controllers
             blogTagIndex.ResultPagging.PageSize = pageSize;
             blogTagIndex.ResultPagging.TotalRows = totalRows;
             blogTagIndex.DomainApi = _config["DomainApi:Domain"];
-            blogTagIndex.Tags = _blogService.GetTagBlogTop(15);
+           
            
             return View(blogTagIndex);
         }

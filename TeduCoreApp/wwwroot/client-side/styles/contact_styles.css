@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -1677,4 +1677,7 @@ select option
 .logos_list li:last-child
 {
 	margin-right: 0px;
+}
+.hidden {
+    visibility: hidden;
 }

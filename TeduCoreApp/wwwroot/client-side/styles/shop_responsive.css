@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -205,10 +205,7 @@
 		-o-transform: none;
 		transform: none;
 	}
-	.shop_content
-	{
-		margin-top: 60px;
-	}
+	
 	.product_item
 	{
 		width: 25%;
@@ -633,4 +630,17 @@
 @media only screen and (max-width: 400px)
 {
 	
+}
+@media only screen and (max-width: 991px)
+{
+    .hideShowdive {
+        visibility: hidden;
+        height:0px;
+    }
+    .magintopHide{
+        margin-top:0px;
+    }
+}
+.shop_content {
+    margin-top: 0px;
 }

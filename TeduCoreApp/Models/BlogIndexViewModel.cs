@@ -16,9 +16,6 @@ namespace TeduCoreApp.Models
             ResultPagging = new WebResultPaging<BlogViewModel> { };
         }
         public WebResultPaging<BlogViewModel> ResultPagging { get; set; } 
-        
-
-        public List<TagViewModel> Tags { get; set; }
 
         public string DomainApi { get; set; }
     }

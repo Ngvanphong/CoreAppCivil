@@ -1,10 +1,107 @@
 ﻿@using TeduCoreApp.Data.ViewModels.Contact
 @{
     ViewData["Title"] = "Thông tin liên hệ";
-    ViewData["MetaDescription"] ="Hãy liên lạc với shop nếu quy khách có bất cứ thắc mắc về sản phẩm, đặt hàng, giao hàng.";
+    ViewData["MetaDescription"] = "Hãy liên lạc với shop nếu quy khách có bất cứ thắc mắc về sản phẩm, đặt hàng, giao hàng.";
     ViewData["MetaKeyword"] = "Liên lạc, thắc mắc, phản hồi khách hàng, thông tin liên hệ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model ContactViewModel
+<!-- Contact Info -->
+<head>
+    <link rel="stylesheet" type="text/css" href="~/client-side/styles/contact_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/client-side/styles/contact_responsive.css">
+</head>
+@section Scripts{
+
+    @*<script src="~/client-side/js/contact_custom.js"></script>*@
+    <script src="~/client-side/js/custom.js"></script>
+}
+
+<div class="contact_info">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="contact_info_container d-flex flex-lg-row flex-column justify-content-between align-items-between">
+
+                    <!-- Contact Item -->
+                    <div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="contact_info_image"><img src="~/client-side/images/contact_1.png" alt=""></div>
+                        <div class="contact_info_content">
+                            <div class="contact_info_title">Điện thoại</div>
+                            <div class="contact_info_text">@Model.Phone</div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Item -->
+                    <div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="contact_info_image"><img src="~/client-side/images/contact_2.png" alt=""></div>
+                        <div class="contact_info_content">
+                            <div class="contact_info_title">Email</div>
+                            <div class="contact_info_text">@Model.Email</div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Item -->
+                    <div class="contact_info_item d-flex flex-row align-items-center justify-content-start">
+                        <div class="contact_info_image"><img src="~/client-side/images/contact_3.png" alt=""></div>
+                        <div class="contact_info_content">
+                            <div class="contact_info_title">Địa chỉ</div>
+                            <div class="contact_info_text">@Model.Address</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Contact Form -->
+
+
+<div class="panel"></div>
+
+
+<!-- Map -->
+<!-- Map -->
+
+<div class="contact_map">
+    <div id="google_map" class="google_map">
+        <div class="map_container">
+            <label class="hidden"  id="lat"> @Model.Lat</label>
+            <label class="hidden" id="lng"> @Model.Lng</label>
+            <label class="hidden" id="address"> @Model.Address</label>
+            <div style="width: 100%;height: 400px;background-color: grey; align-self:center" id="map"></div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // Note: This example requires that you consent to location sharing when
+    // prompted by your browser. If you see the error "The Geolocation service
+    // failed.", it means you probably did not give permission for the browser to
+    // locate you.
+    var map, infoWindow, marker;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: parseFloat($("#lat").text()), lng: parseFloat($("#lng").text()) },
+            zoom: 17
+        });
+        infoWindow = new google.maps.InfoWindow;
+        marker = new google.maps.Marker({
+            position: { lat: parseFloat($("#lat").text()), lng: parseFloat($("#lng").text()) },
+            map: map,
+            title: $('#address').text(),
+        }
+        );
+        infoWindow.open(map, marker);
+        infoWindow.setContent($("#address").text());
+        // Try HTML5 geolocation.
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYMX_Li2zERYJmlzkcARfTAnOXSpp1IJU&callback=initMap"
+        async defer></script>
 
 

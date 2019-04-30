@@ -1,7 +1,89 @@
 ﻿@{
-    ViewData["Title"] = Model.ResultPagging.PageIndex == 1 ? "Bài viết" :  "Bài viết-trang " + Model.ResultPagging.PageIndex;
+    ViewData["Title"] = Model.ResultPagging.PageIndex == 1 ? "Bài viết" : "Bài viết-trang " + Model.ResultPagging.PageIndex;
     ViewData["MetaDescription"] = Model.ResultPagging.PageIndex == 1 ? "Nội dung bài viết" : "Nội dung bài viết-trang " + Model.ResultPagging.PageIndex;
     ViewData["MetaKeyword"] = Model.ResultPagging.PageIndex == 1 ? "Bài viết" : "Bài viết-trang " + Model.ResultPagging.PageIndex;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model BlogIndexViewModel
+<!-- Blog -->
+<head>
+    <link rel="stylesheet" type="text/css" href="~/client-side/styles/blog_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/client-side/styles/blog_responsive.css">
+</head>
+@section Scripts{
+    @*<script src="~/client-side/js/blog_custom.js"></script>*@
+    <script src="~/client-side/plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="~/client-side/js/custom.js"></script>
+}
+
+<div class="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="blog_posts d-flex flex-row align-items-start justify-content-between">
+                    @foreach (var blog in Model.ResultPagging.Items)
+                    {
+                        var urlblog = "/" + blog.SeoAlias + ".b-" + blog.Id + ".html";
+                        <!-- Blog post -->
+                        <div class="blog_post">
+                            <div class="blog_image" style="background-image:url(@Model.DomainApi@blog.Image)"></div>
+                            <div class="blog_text">@blog.Name</div>
+                            <div class="blog_button"><a href="@urlblog">Xem thêm</a></div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+        <ul class="pagination">
+
+            @if (Model.ResultPagging.TotalRows > 1)
+            {
+                var startPageIndex = Math.Max(1, Model.ResultPagging.PageIndex - 8 / 2);
+                var endPageIndex = Math.Min(Model.ResultPagging.TotalPages, Model.ResultPagging.PageIndex + 8 / 2);
+                @if (Model.ResultPagging.PageIndex > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="?page=@(Model.ResultPagging.PageIndex - 1)&pageSize=@Model.ResultPagging.PageSize" tabindex="-1">Previous</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                }
+                for (int i = startPageIndex; i <= endPageIndex; i++)
+                {
+                    if (i == Model.ResultPagging.PageIndex)
+                    {
+                        <li class="page-item active">
+                            <a class="page-link" href="?page=@i&pageSize=@Model.ResultPagging.PageSize">@i<span class="sr-only">(current)</span></a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item"><a class="page-link" href="?page=@i&pageSize=@Model.ResultPagging.PageSize">@i</a></li>
+                    }
+                }
+                @if (Model.ResultPagging.PageIndex < Model.ResultPagging.TotalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="?page=@(Model.ResultPagging.PageIndex + 1)&pageSize=@Model.ResultPagging.PageSize">Next</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                }
+
+
+            }
+        </ul>
+    </div>
+</div>
+
+

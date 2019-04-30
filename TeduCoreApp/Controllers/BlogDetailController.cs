@@ -13,15 +13,12 @@ namespace TeduCoreApp.Controllers
     public class BlogDetailController : Controller
     {
         private IBlogService _blogService;
-       
-        private IConfiguration _config;
 
-        public BlogDetailController(IBlogService blogService, 
-            IConfiguration config)
+
+        public BlogDetailController(IBlogService blogService)
         {
             _blogService = blogService;
-           
-            _config = config;
+    
         }
         [Route("{alias}.b-{id}.html")]
         public IActionResult Index(int id)
@@ -29,8 +26,6 @@ namespace TeduCoreApp.Controllers
             BlogDetailIndexViewModel blogDetail = new BlogDetailIndexViewModel() { };
             blogDetail.Bog = _blogService.GetById(id);
             blogDetail.TagsForBlogDetail = _blogService.GetTagByBlogId(id);
-            blogDetail.DomainApi = _config["DomainApi:Domain"];
-            blogDetail.Tags = _blogService.GetTagBlogTop(15);
            
             return View(blogDetail);
         }

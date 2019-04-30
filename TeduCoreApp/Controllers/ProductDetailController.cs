@@ -29,8 +29,7 @@ namespace TeduCoreApp.Controllers
         {
             ProductDetailViewModel productDetail = new ProductDetailViewModel() { };
             productDetail.ProductDetail = _productService.GetById(id);
-            productDetail.ProductRelate = _productService.GetProductRelate(productDetail.ProductDetail.CategoryId,6);       
-            productDetail.ProductTags = _productService.GetTagByProductId(id);
+            productDetail.ProductRelate = _productService.GetProductRelate(productDetail.ProductDetail.CategoryId,6);                  
             productDetail.DomainApi= _config["DomainApi:Domain"];
             productDetail.ProductImages = _productImageService.GetProductImageByProdutId(id);
            

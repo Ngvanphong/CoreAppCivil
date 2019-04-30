@@ -254,6 +254,12 @@ namespace TeduCoreApp.Application.Implementation
             return _mapper.Map<List<ProductViewModel>>(query.ToList());
         }
 
-
+        public List<ProductViewModel> GetAllByPantner(int id, int page, int pageSize, out int totalRow)
+        {
+            var query = _productRepository.FindAll(x => x.Status == Data.Enums.Status.Active && x.PantnerId==id);
+            totalRow = query.Count();
+            query = query.Skip((page - 1) * pageSize).Take(pageSize);
+            return _mapper.Map<List<ProductViewModel>>(query.ToList());
+        }
     }
 }

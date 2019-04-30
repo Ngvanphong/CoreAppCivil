@@ -1,11 +1,112 @@
 ﻿@using TeduCoreApp.Utilities.Dtos
 @using TeduCoreApp.Data.ViewModels.Product
 @{
-    ViewData["Title"] = Model.PageIndex == 1 ? "Tìm kiếm sản phẩm: " + (string)ViewBag.SearchName : "Tìm kiếm sẩn phẩm-trang "+(string)ViewBag.SearchName+"-trang " + Model.PageIndex;
+    ViewData["Title"] = Model.PageIndex == 1 ? "Tìm kiếm sản phẩm: " + (string)ViewBag.SearchName : "Tìm kiếm sẩn phẩm-trang " + (string)ViewBag.SearchName + "-trang " + Model.PageIndex;
     ViewData["MetaDescription"] = Model.PageIndex == 1 ? "Nội dung tìm kiếm sản phẩm: " + (string)ViewBag.SearchName : "Nội dung tìm kiếm sản phẩm: " + (string)ViewBag.SearchName + "-trang " + Model.PageIndex;
-    ViewData["MetaKeyword"] = Model.PageIndex == 1 ? "Từ khóa tìm kiếm sản phẩm: "+ (string)ViewBag.SearchName : "Từ khóa tìm kiếm sản phẩm: "+(string)ViewBag.SearchName +"-trang " + Model.PageIndex;
+    ViewData["MetaKeyword"] = Model.PageIndex == 1 ? "Từ khóa tìm kiếm sản phẩm: " + (string)ViewBag.SearchName : "Từ khóa tìm kiếm sản phẩm: " + (string)ViewBag.SearchName + "-trang " + Model.PageIndex;
     Layout = "~/Views/Shared/_Layout.cshtml";
     var searchNames = (string)ViewBag.SearchName;
     var domainApi = (string)ViewBag.DomainApi;
 }
 @model WebResultPaging<ProductViewModel>
+<head>
+    <link href="~/client-side/styles/shop_styles.css" rel="stylesheet" />
+    <link href="~/client-side/styles/shop_responsive.css" rel="stylesheet" />
+</head>
+
+@section Scripts{
+    <script src="~/client-side/plugins/Isotope/isotope.pkgd.min.js"></script>
+    <script src="~/client-side/plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="~/client-side/js/shop_custom.js"></script>
+}
+<div class="shop">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+            </div>
+
+            <div class="col-lg-9">
+
+                <!-- Shop Content -->
+
+                <div class="shop_content">
+                    <div class="shop_bar clearfix">
+                        <div class="shop_product_count"><span>@searchNames</span></div>
+                    </div>
+
+                    <div class="product_grid">
+                        <div class="product_grid_border"></div>
+                        @foreach (var product in Model.Items)
+                        {
+                            var url = "/" + product.SeoAlias + ".p-" + product.Id + ".html";
+                            <!-- Product Item -->
+                            <div class="product_item" style="pointer-events:none">
+                                <div class="product_border"></div>
+                                <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="@domainApi@product.ThumbnailImage" alt="@product.Name"></div>
+                                <div class="product_content" style="pointer-events:all">
+                                    <div class="product_name"><div><a href="@url" tabindex="0">@product.Name</a></div></div>
+                                </div>
+                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+                            </div>
+                        }
+
+
+                    </div>
+
+                    <!-- Shop Page Navigation -->
+                    <div class="shop_page_nav d-flex flex-row">
+                        <ul class="pagination">
+
+                            @if (Model.TotalRows > 1)
+                            {
+                                var startPageIndex = Math.Max(1, Model.PageIndex - 8 / 2);
+                                var endPageIndex = Math.Min(Model.TotalPages, Model.PageIndex + 8 / 2);
+                                @if (Model.PageIndex > 1)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=@(Model.PageIndex - 1)&pageSize=@Model.PageSize" tabindex="-1">Previous</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                    </li>
+                                }
+                                for (int i = startPageIndex; i <= endPageIndex; i++)
+                                {
+                                    if (i == Model.PageIndex)
+                                    {
+                                        <li class="page-item active">
+                                            <a class="page-link" href="?page=@i&pageSize=@Model.PageSize">@i<span class="sr-only">(current)</span></a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="page-item"><a class="page-link" href="?page=@i&pageSize=@Model.PageSize">@i</a></li>
+                                    }
+                                }
+                                @if (Model.PageIndex < Model.TotalPages)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=@(Model.PageIndex + 1)&pageSize=@Model.PageSize">Next</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#">Next</a>
+                                    </li>
+                                }
+
+
+                            }
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

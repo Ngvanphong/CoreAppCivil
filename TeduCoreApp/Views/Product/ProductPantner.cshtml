@@ -1,0 +1,124 @@
+﻿@model ProductPantnerViewModel
+@{
+    ViewData["Title"] = Model.Pantner.Name;
+    ViewData["MetaDescription"] = Model.Pantner.Name;
+    ViewData["MetaKeyword"] = Model.Pantner.Name;
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link href="~/client-side/styles/shop_styles.css" rel="stylesheet" />
+    <link href="~/client-side/styles/shop_responsive.css" rel="stylesheet" />
+</head>
+
+@section Scripts{
+    <script src="~/client-side/plugins/Isotope/isotope.pkgd.min.js"></script>
+    <script src="~/client-side/plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="~/client-side/js/shop_custom.js"></script>
+}
+<div class="shop">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 hideShowdive">
+
+                <!-- Shop Sidebar -->
+                <div class="shop_sidebar">
+
+                    <div class="sidebar_section">
+                        <div class="sidebar_subtitle brands_subtitle">Tag sản phẩm</div>
+                        <ul class="brands_list">
+                            @foreach (var tag in Model.Tags)
+                            {
+                                var urltag = "/pt-" + tag.Id + ".html";
+                                <li class="brand"><a href="@urltag">@tag.Name</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9 magintopHide">
+
+                <!-- Shop Content -->
+
+                <div class="shop_content">
+                    <div class="shop_bar clearfix">
+                        <div class="shop_product_count"><span>@Model.Pantner.Name</span></div>
+                    </div>
+
+                    <div class="product_grid">
+                        <div class="product_grid_border"></div>
+                        @foreach (var product in Model.WebResultPaging.Items)
+                        {
+                            var url = "/" + product.SeoAlias + ".p-" + product.Id + ".html";
+                            <!-- Product Item -->
+                            <div class="product_item" style="pointer-events:none">
+                                <div class="product_border"></div>
+                                <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="@Model.DomainApi@product.ThumbnailImage" alt="@product.Name"></div>
+                                <div class="product_content" style="pointer-events:all">
+                                    <div class="product_name"><div><a href="@url" tabindex="0">@product.Name</a></div></div>
+                                </div>
+                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+                            </div>
+                        }
+
+
+                    </div>
+
+                    <!-- Shop Page Navigation -->
+                    <div class="shop_page_nav d-flex flex-row">
+                        <ul class="pagination">
+
+                            @if (Model.WebResultPaging.TotalRows > 1)
+                            {
+                                var startPageIndex = Math.Max(1, Model.WebResultPaging.PageIndex - 8 / 2);
+                                var endPageIndex = Math.Min(Model.WebResultPaging.TotalPages, Model.WebResultPaging.PageIndex + 8 / 2);
+                                @if (Model.WebResultPaging.PageIndex > 1)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=@(Model.WebResultPaging.PageIndex - 1)&pageSize=@Model.WebResultPaging.PageSize" tabindex="-1">Previous</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                    </li>
+                                }
+                                for (int i = startPageIndex; i <= endPageIndex; i++)
+                                {
+                                    if (i == Model.WebResultPaging.PageIndex)
+                                    {
+                                        <li class="page-item active">
+                                            <a class="page-link" href="?page=@i&pageSize=@Model.WebResultPaging.PageSize">@i<span class="sr-only">(current)</span></a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="page-item"><a class="page-link" href="?page=@i&pageSize=@Model.WebResultPaging.PageSize">@i</a></li>
+                                    }
+                                }
+                                @if (Model.WebResultPaging.PageIndex < Model.WebResultPaging.TotalPages)
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=@(Model.WebResultPaging.PageIndex + 1)&pageSize=@Model.WebResultPaging.PageSize">Next</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#">Next</a>
+                                    </li>
+                                }
+
+
+                            }
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -50,5 +50,7 @@ namespace TeduCoreApp.Application.Interfaces
         void SaveChanges();
 
         List<ProductViewModel> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow);
+
+        List<ProductViewModel> GetAllByPantner(int id, int page, int pageSize, out int totalRow);
     }
 }

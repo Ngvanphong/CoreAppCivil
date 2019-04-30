@@ -15,6 +15,7 @@ namespace TeduCoreApp.Controllers
     public class ProductTagController : Controller
     {
         private IProductService _productService;
+       
         private ISlideService _slideService;
        
        
@@ -29,14 +30,21 @@ namespace TeduCoreApp.Controllers
         }
 
         [Route("pt-{id}.html")]
-        public IActionResult Index(string id)
+        public IActionResult Index(string id, int page=1, int pageSize=20)
         {
             ProductTagIndexViewModel productTag = new ProductTagIndexViewModel() { };
             productTag.DomainApi= _config["DomainApi:Domain"];
-           
-            productTag.Slides = _slideService.GetAll();
+  
             productTag.ProductTag = _productService.GetTagById(id);
             productTag.Tags = _productService.GetAllTag(15);
+            List<ProductViewModel> products = _productService.GetAllByTagPaging(id, page, pageSize, out int totalRows);
+            productTag.WebResultPaging = new WebResultPaging<ProductViewModel>()
+            {
+                Items = products,
+                PageIndex = page,
+                PageSize = pageSize,
+                TotalRows = totalRows,
+            };
             return View(productTag);
         }
 

@@ -32,7 +32,7 @@ namespace TeduCoreApp.Controllers
             
             _systemConfig = systemConfig;
         }
-
+        [ResponseCache(Duration=600, Location = ResponseCacheLocation.Any)]
         public IActionResult Index()
         {
             
