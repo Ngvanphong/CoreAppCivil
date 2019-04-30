@@ -91,7 +91,7 @@ namespace TeduCoreApp.Application.Implementation
 
         public List<BlogViewModel> GetAllPaggingByActive(int page, int pageSize, out int totalRow)
         {
-            var listBlog = _blogRepository.FindAll();           
+            var listBlog = _blogRepository.FindAll(x=>x.Status==Data.Enums.Status.Active);           
             totalRow = listBlog.Count();
             listBlog = listBlog.OrderByDescending(x => x.DateCreated).Skip((page - 1) * pageSize).Take(pageSize);
             return _mapper.Map<List<BlogViewModel>>(listBlog.ToList());
