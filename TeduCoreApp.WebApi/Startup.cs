@@ -187,12 +187,7 @@ namespace TeduCoreApp.WebApi
             app.UseAuthentication();
 
             app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                      name: "home",
-                      template: "api/values",
-                      defaults: new { controller = "Home", action = "Index" }
-                  );
+            {                
                 routes.MapRoute(
 
                     name: "default",
