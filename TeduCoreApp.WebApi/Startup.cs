@@ -9,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
-using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.Text;
 using TeduCoreApp.Application.Dapper.Implementation;
@@ -46,15 +45,17 @@ namespace TeduCoreApp.WebApi
             services.AddIdentity<AppUser, AppRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
-            // Api Page
-            services.AddSwaggerGen(s =>
-            {
-                s.SwaggerDoc("v1", new Info
-                {
-                    Version = "v1",
-                    Title = "TeduCoreApp",
-                });
-            });
+
+            // Api Page For Swagger
+            //services.AddSwaggerGen(s =>
+            //{
+            //    s.SwaggerDoc("v1", new Info
+            //    {
+            //        Version = "v1",
+            //        Title = "TeduCoreApp",
+            //    });
+            //});
+
             //Crors orgin
             services.AddCors(o => o.AddPolicy("TeduCorsPolicy", builder =>
                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials()
@@ -174,8 +175,8 @@ namespace TeduCoreApp.WebApi
             //set allow any domain
             app.UseCors("TeduCorsPolicy");
             // use swash
-            app.UseSwagger();
-            app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Project API v1.1"));
+            //app.UseSwagger();
+            //app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Project API v1.1"));
 
             if (env.IsDevelopment())
             {
@@ -188,11 +189,18 @@ namespace TeduCoreApp.WebApi
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                      name: "home",
+                      template: "api/values",
+                      defaults: new { controller = "Home", action = "Index" }
+                  );
+                routes.MapRoute(
+
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-           
-            app.UseMvc();
+
+
+            //app.UseMvc();
 
            
         }
