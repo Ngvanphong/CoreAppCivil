@@ -1,11 +1,11 @@
-﻿
+﻿@model ProductTagIndexViewModel
 @{
-    ViewData["Title"] = Model.ProductTag.Name;
-    ViewData["MetaDescription"] = Model.ProductTag.Name;
-    ViewData["MetaKeyword"] = Model.ProductTag.Name;
+    ViewData["Title"] = Model.WebResultPaging.PageIndex == 1 ? Model.ProductTag.Name: Model.ProductTag.Name+"-trang "+ Model.WebResultPaging.PageIndex;
+    ViewData["MetaDescription"] = Model.WebResultPaging.PageIndex == 1 ? Model.ProductTag.Name: Model.ProductTag.Name+"-trang "+ Model.WebResultPaging.PageIndex;
+    ViewData["MetaKeyword"] = Model.WebResultPaging.PageIndex==1? Model.ProductTag.Name: Model.ProductTag.Name+"-trang "+ Model.WebResultPaging.PageIndex;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model ProductTagIndexViewModel
+
 
 <head>
     <link href="~/client-side/styles/shop_styles.css" rel="stylesheet" />

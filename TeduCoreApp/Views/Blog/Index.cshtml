@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = Model.ResultPagging.PageIndex == 1 ? "Bài viết" : "Bài viết-trang " + Model.ResultPagging.PageIndex;
-    ViewData["MetaDescription"] = Model.ResultPagging.PageIndex == 1 ? "Nội dung bài viết" : "Nội dung bài viết-trang " + Model.ResultPagging.PageIndex;
-    ViewData["MetaKeyword"] = Model.ResultPagging.PageIndex == 1 ? "Bài viết" : "Bài viết-trang " + Model.ResultPagging.PageIndex;
+    ViewData["MetaDescription"] = Model.ResultPagging.PageIndex == 1 ? "Nội dung bài viết mua bán thiết bị xây dựng " : "Nội dung bài viết mua bán thiết bị xây dựng-trang " + Model.ResultPagging.PageIndex;
+    ViewData["MetaKeyword"] = Model.ResultPagging.PageIndex == 1 ? "Bài viết thiết bị, vật liệu, buôn bán xây dựng" : "Bài viết thiết bị, vật liệu, buôn bán xây dựng-trang " + Model.ResultPagging.PageIndex;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model BlogIndexViewModel

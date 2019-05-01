@@ -1,8 +1,8 @@
 ﻿@model ProductIndexViewModel
 @{
-    ViewData["Title"] = Model.ProductCategory.SeoPageTitle;
-    ViewData["MetaDescription"] = Model.ProductCategory.SeoDescription;
-    ViewData["MetaKeyword"] = Model.ProductCategory.SeoKeywords;
+    ViewData["Title"] = Model.WebResultPaging.PageIndex == 1 ? Model.ProductCategory.SeoPageTitle : Model.ProductCategory.SeoPageTitle + "-trang " + Model.WebResultPaging.PageIndex;
+    ViewData["MetaDescription"] = Model.WebResultPaging.PageIndex == 1 ? Model.ProductCategory.SeoDescription : Model.ProductCategory.SeoDescription + "-trang " + Model.WebResultPaging.PageIndex;
+    ViewData["MetaKeyword"] = Model.WebResultPaging.PageIndex == 1 ? Model.ProductCategory.SeoKeywords : Model.ProductCategory.SeoKeywords + "-trang " + Model.WebResultPaging.PageIndex;
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -45,7 +45,7 @@
                     <div class="shop_bar clearfix">
                         <div class="shop_product_count"><span>@Model.ProductCategory.Name</span></div>
                     </div>
-                    
+
                     <div class="product_grid">
                         <div class="product_grid_border"></div>
                         @foreach (var product in Model.WebResultPaging.Items)
@@ -54,15 +54,13 @@
                             <!-- Product Item -->
                             <div class="product_item" style="pointer-events:none">
                                 <div class="product_border"></div>
-                                <div class="product_image d-flex flex-column align-items-center justify-content-center"><img  src="@Model.DomainApi@product.ThumbnailImage" alt="@product.Name"></div>
+                                <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="@Model.DomainApi@product.ThumbnailImage" alt="@product.Name"></div>
                                 <div class="product_content" style="pointer-events:all">
                                     <div class="product_name"><div><a href="@url" tabindex="0">@product.Name</a></div></div>
                                 </div>
                                 <div class="product_fav"><i class="fas fa-heart"></i></div>
                             </div>
                         }
-
-
                     </div>
 
                     <!-- Shop Page Navigation -->
@@ -111,14 +109,11 @@
                                     </li>
                                 }
 
-
                             }
                         </ul>
                     </div>
-
-                  
                 </div>
-                </div>
+            </div>
         </div>
     </div>
 </div>
