@@ -75,17 +75,18 @@
                             <li class="hassubs">
                                 <a href="#" style="pointer-events:none">Thương hiệu<i class="fas fa-chevron-down"></i></a>
                                 <ul>
-                                    @foreach(var pantner in Model.listPantner)
+                                    @foreach (var pantner in Model.listPantner)
                                     {
                                         var urlpanter = "/pantner-" + pantner.Id + ".html";
-                                        <li><a href="@urlpanter">@pantner.Name<i class="fas fa-chevron-down"></i></a></li> 
+                                        <li><a href="@urlpanter">@pantner.Name<i class="fas fa-chevron-down"></i></a></li>
                                     }
-                                    
+
                                 </ul>
                             </li>
                             <li><a href="/page.html?alias=about">Giới thiệu<i class="fas fa-chevron-down"></i></a></li>
                             <li><a href="/contact.html">Liên hệ<i class="fas fa-chevron-down"></i></a></li>
                             <li><a href="/page.html?alias=policy">Chính sách<i class="fas fa-chevron-down"></i></a></li>
+                            <li><a href="/page.html?alias=payment">Thanh toán<i class="fas fa-chevron-down"></i></a></li>
                             <li><a href="/blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
 
                         </ul>
