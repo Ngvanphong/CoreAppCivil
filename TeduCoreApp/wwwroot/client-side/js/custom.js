@@ -579,7 +579,9 @@ $(document).ready(function()
 				items:1,
 				loop:true,
 				nav:false,
-				dots:true,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 5000,
 				dotsContainer: '.banner_2_dots',
 				smartSpeed:1200
 			});
